@@ -1,4 +1,4 @@
-package by.academy.homework1;
+package by.academy.lesson2;
 
 public class Cat {
 	int age;
