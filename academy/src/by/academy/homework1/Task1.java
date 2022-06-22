@@ -4,13 +4,14 @@ import java.util.Scanner;
 
 public class Task1 {
 	public static void main (String[] args) {
-		int discountpercent, totalsum;
+		int discountpercent;
+		double totalsum;
 		Scanner sc= new Scanner(System.in);
 		
 		System.out.println("Введите сумму покупки: ");
-		if (sc.hasNextInt()) {
-			int sum=sc.nextInt();
-			if (sum<0) {
+		if (sc.hasNextDouble()) {
+			double sum=sc.nextDouble();
+			if (sum<=0) {
 				System.out.println("Сумма может быть только положительным числом");			
 			}
 			else {
