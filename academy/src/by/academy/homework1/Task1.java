@@ -24,34 +24,34 @@ public class Task1 {
 					else {
 						if (sum<100) {
 							discountpercent=5;
-							totalsum=sum*(100-discountpercent);
+							totalsum=sum*(100-discountpercent)/100;
 							System.out.println("Финальная цена: "+totalsum);
 						}	
 						else if (sum>=100 && sum<200) {
 							discountpercent=7;
-							totalsum=sum*(100-discountpercent);
+							totalsum=sum*(100-discountpercent)/100;
 							System.out.println("Финальная цена: "+totalsum);
 						}	
 						else if (sum>=200 && sum<300) {
 							if (age>18){
 								discountpercent=16;
-								totalsum=sum*(100-discountpercent);
+								totalsum=sum*(100-discountpercent)/100;
 								System.out.println("Финальная цена: "+totalsum);
 							}
 							else {
 								discountpercent=9;
-								totalsum=sum*(100-discountpercent);
+								totalsum=sum*(100-discountpercent)/100;
 								System.out.println("Финальная цена: "+totalsum);
 							}	
 						}	
 						else if (sum>=300 && sum<400) {
 							discountpercent=15;
-							totalsum=sum*(100-discountpercent);
+							totalsum=sum*(100-discountpercent)/100;
 							System.out.println("Финальная цена: "+totalsum);
 						}
 						else if (sum>=400) {
 							discountpercent=20;
-							totalsum=sum*(100-discountpercent);
+							totalsum=sum*(100-discountpercent)/100;
 							System.out.println("Финальная цена: "+totalsum);
 						}	
 					}
