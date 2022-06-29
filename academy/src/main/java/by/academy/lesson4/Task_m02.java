@@ -1,7 +1,6 @@
 package by.academy.lesson4;
 
 import java.util.Random;
-import java.util.Arrays;
 
 public class Task_m02 {
 	public static void main(String[] args) {
