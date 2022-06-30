@@ -12,22 +12,32 @@ public class Task11 {
 		String str="fffff ab f 1234 jkjk";
 		String[] array = str.split(" ");
 		System.out.println(Arrays.toString(array));
-		int minUniqueChars=-1;
+		int minUniqueChars=0;
 		int minUniqueCharsIndex=0;
+		
+			for (int i=0;i<array.length; i++) {		
+				if (array[i].length()>minUniqueChars) {
+					minUniqueChars=array[i].length();
+				}
+			}
 	    
 	    	for (int i=0;i<array.length;i++) {
+	    		
 	    		StringBuilder stb = new StringBuilder(array[i]);
+	    		
 	    		for (int j=0;j<stb.length();j++) {
 	    			for(int k=j+1;k<stb.length();k++) {
 	    				if (stb.charAt(j)==stb.charAt(k)) {
 	    					stb.deleteCharAt(k);
 	    					k--;
 	    				}
-	    			}
-		    	if (stb.length()<minUniqueChars) {
-		    		minUniqueCharsIndex = i;
-		    	}		    			
+	    			}	    			
 	    		}
+	    		
+		    	if (stb.length()<minUniqueChars) {
+		    		minUniqueChars=stb.length();
+		    		minUniqueCharsIndex = i;
+		    	}	    		
 	    	}	
 
 	    	System.out.println(array[minUniqueCharsIndex]);	    					    
