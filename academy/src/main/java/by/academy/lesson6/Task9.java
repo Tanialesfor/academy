@@ -8,7 +8,7 @@ public class Task9 {
 
 	public static boolean test(String testString) { 
 		Pattern pattern = Pattern.compile(".+\\.(com|ua|org)"); 
-	    Matcher matcher = pattern.matcher(testString); 
+		Matcher matcher = pattern.matcher(testString); 
 	    return matcher.matches(); 	       
 	}	
 	
