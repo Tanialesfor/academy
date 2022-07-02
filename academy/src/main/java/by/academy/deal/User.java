@@ -5,6 +5,6 @@ public class User {
 	String name;
 	double money;
 		
-	public 
+//	public 
 	
 }

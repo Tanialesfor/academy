@@ -10,7 +10,7 @@ public class Task0 {
 		// write code here
 		for (int i=0; i<arr.length; i++) {
 			for (int j=i+1; j<arr.length; j++) {
-				if (arr[i]-arr[j]==k) {
+				if (Math.abs(arr[i]-arr[j])==k) {
 				pairsCount++;
 			    }
 			}
