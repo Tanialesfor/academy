@@ -2,16 +2,17 @@ package by.academy.deal;
 
 public class Product {
 	
-		String prodact;
+		String nameProduct;
 		double price;
 		int quantity;
 		boolean isTax;
+		double salePrice;
 
-		public void setRrodact (String prodact) {
-			this.prodact=prodact;
+		public void setNameProduct (String nameProduct) {
+			this.nameProduct=nameProduct;
 		}
-		public String getRrodact() {
-			return prodact;
+		public String getNameProdact() {
+			return nameProduct;
 		}
 		public void setPrice (double price) {
 			this.price=price;
@@ -26,9 +27,19 @@ public class Product {
 			return quantity;
 		}
 		public void setIsTax (boolean isTax) {
-			this.quantity=quantity;
+			this.isTax=isTax;
 		}
 		public boolean getIsTaxy() {
 			return isTax;
 		}
+		
+		public void Discount(double discount) {
+			
+		}
+		
+		public void SalePrice (double salePrice) {
+			this.salePrice=price*quantity;
+		}
+		
+		
 }
