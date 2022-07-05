@@ -2,17 +2,17 @@ package by.academy.deal;
 
 public class Product {
 	
-		String nameProduct;
+		String name;
 		double price;
 		int quantity;
 		boolean isTax;
-		double salePrice;
+//		double salePrice;
 
-		public void setNameProduct (String nameProduct) {
-			this.nameProduct=nameProduct;
+		public void setName (String name) {
+			this.name=name;
 		}
-		public String getNameProdact() {
-			return nameProduct;
+		public String getName() {
+			return name;
 		}
 		public void setPrice (double price) {
 			this.price=price;
@@ -33,12 +33,12 @@ public class Product {
 			return isTax;
 		}
 		
-		public void Discount(double discount) {
-			
+		public double discount(double price) {
+			return price;
 		}
 		
-		public void SalePrice (double salePrice) {
-			this.salePrice=price*quantity;
+		public double salePrice(int quantity, double price) {
+			return quantity*price;
 		}
 		
 		

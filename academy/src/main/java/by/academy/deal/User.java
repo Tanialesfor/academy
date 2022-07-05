@@ -5,9 +5,6 @@ public class User {
 	String name;
 	double money;
 	
-	public User () {
-		
-	}
 	public User (String name) {
 		this.name=name;
 	}	
