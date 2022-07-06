@@ -69,13 +69,15 @@ public class Phone {
 	}
 	
 	public boolean equals (Phone phone) {
-		if (this.number.equals(phone.number)) {
+		if ((this.number.equals(phone.number))&&(this.model.equals(phone.model))&&(this.weight==phone.weight)) {
 			return true;
 		} else {
 			return false;
 		}
 	}
-	
+//	public int hashCode () {
+//		return this.hashCode();
+//	}
 	}
 	
 

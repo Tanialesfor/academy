@@ -30,7 +30,6 @@ public class Test {
 			
 			System.out.println(p1.equals(p2));
 			
-			if (true) {System.out.println("TRUE");}
-			if (false) {System.out.println("TRUE");} else {System.out.println("FALSE");}
+			System.out.println(p1.hashCode());
 	}
 }
