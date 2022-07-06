@@ -15,8 +15,7 @@ public class Phone {
 	String number;
 	String model;
 	double weight;
-	String nickname;
-	
+
 	public void setNumber (String number) {
 		this.number=number;
 	}
@@ -35,19 +34,48 @@ public class Phone {
 	public double getWeight() {
 		return weight;
 	}	
+
+	public void receiveCall (String nickname) {
+		System.out.println("Звонит "+nickname);
+	}
 	
-	public Phone (String number, String model, double weight) {
+//	public Phone (String number, String model, double weight) {
+//		this.number=number;
+//		this.model=model;
+//		this.weight=weight;
+//	}	
+	public Phone (String number, String model) {
 		this.number=number;
 		this.model=model;
-		this.weight=weight;
-		}
-
-	public String receiveCall (String nickname) {
-		return nickname;
 	}
-		
+	public Phone (String number, String model, double weight) {
+		this(number,model);
+		this.weight=weight;
+	}	
 	public Phone () {
 		super();
+	}	
+			
+	public void receiveCall (String nickname, String number) {
+		System.out.println("Звонит "+nickname+" "+number);
+	}	
+	
+//	public String sendMessageс (String...number) {
+//		return number;
+//	}
+	
+	public String toString () {
+		return this.number + "/" + this.model + "/" + this.weight;
 	}
 	
-}
+	public boolean equals (Phone phone) {
+		if (this.number.equals(phone.number)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	}
+	
+
