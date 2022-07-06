@@ -15,6 +15,7 @@ public class Phone {
 	String number;
 	String model;
 	double weight;
+	String nickname;
 	
 	public void setNumber (String number) {
 		this.number=number;
@@ -39,7 +40,12 @@ public class Phone {
 		this.number=number;
 		this.model=model;
 		this.weight=weight;
+		}
+
+	public String receiveCall (String nickname) {
+		return nickname;
 	}
+		
 	public Phone () {
 		super();
 	}
