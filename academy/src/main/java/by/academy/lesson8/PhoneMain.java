@@ -1,6 +1,6 @@
 package by.academy.lesson8;
 
-public class Test {
+public class PhoneMain {
 	public static void main(String[] args) {
 
 			
@@ -23,6 +23,8 @@ public class Test {
 			p1.receiveCall("Виктория", p1.getNumber());
 			p2.receiveCall("Владимир",p2.getNumber());
 			p3.receiveCall("Владислава",p3.getNumber());
+			
+			p1.sendMessageс("(+37529)597-58-12", "(+37533)378-16-25");
 			
 			System.out.println(p1.toString());
 			System.out.println(p2.toString());

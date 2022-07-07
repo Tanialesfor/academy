@@ -2,7 +2,7 @@ package by.academy.lesson8;
 
 import java.util.Arrays;
 
-public class MainMatrix {
+public class MatrixMain {
 	public static void main(String[] args) {
 		
 		Matrix matr1=new Matrix(3,4);

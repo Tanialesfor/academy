@@ -60,9 +60,12 @@ public class Phone {
 		System.out.println("Звонит "+nickname+" "+number);
 	}	
 	
-//	public String sendMessageс (String...number) {
-//		return number;
-//	}
+	public void sendMessageс (String...array) {
+		System.out.println("Сообщение передано на следующие номера телефонов: ");
+			for (String element : array) {
+				System.out.println(element);
+			}
+	}
 	
 	public String toString () {
 		return this.number + "/" + this.model + "/" + this.weight;
