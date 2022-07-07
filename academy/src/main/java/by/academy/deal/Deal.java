@@ -4,10 +4,10 @@ import java.time.LocalDateTime;
 
 public class Deal {
 	
-		User seller;
-		User buyer;
-		Product[] products;
-		LocalDateTime buyTime;
+	private User seller;
+	private User buyer;
+	private Product[] products;
+	private LocalDateTime buyTime;
 						
 		public Deal () {
 			

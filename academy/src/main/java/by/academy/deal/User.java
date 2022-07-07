@@ -2,8 +2,8 @@ package by.academy.deal;
 
 public class User {
 		
-	String name;
-	double money;
+	private String name;
+	private double money;
 	
 	public User (String name) {
 		this.name=name;

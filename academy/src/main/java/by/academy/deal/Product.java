@@ -2,12 +2,15 @@ package by.academy.deal;
 
 public class Product {
 	
-		String name;
-		double price;
-		int quantity;
-		boolean isTax;
+		protected String name;
+		protected double price;
+		protected int quantity;
+		protected boolean isTax;
 //		double salePrice;
 
+		public Product () {
+			super ();
+		}
 		public void setName (String name) {
 			this.name=name;
 		}
@@ -33,8 +36,14 @@ public class Product {
 			return isTax;
 		}
 		
-		public double discount(double price) {
-			return price;
+		
+		public double discount() {
+			if (quantity>=2) {
+				return 0.5;
+			}
+			else {
+				return 1;
+			}
 		}
 		
 		public double salePrice(int quantity, double price) {

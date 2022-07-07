@@ -8,6 +8,9 @@ public class Matrix {
 	int m;
 	double[][] matr;
 	
+	public void setQuantityRows (int n) {
+		this.n=n;
+	}
 	public int getQuantityRows() {
 		return n;	
 	}	
