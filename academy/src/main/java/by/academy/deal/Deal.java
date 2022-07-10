@@ -8,20 +8,59 @@ public class Deal {
 	private User buyer;
 	private Product[] products;
 	private LocalDateTime buyTime;
-						
-		public Deal () {
+							
+		public Deal() {
+			super();
+		}
+		
+		public void setSeller(User seller) {
+			this.seller = seller;
+		}
+		public User getSeller() {
+			return seller;
+		}
+		
+		public void setBuyer(User buyer) {
+			this.buyer = buyer;
+		}
+		public User getBuyer() {
+			return buyer;
+		}
+		
+		public void setProducts(Product[] products) {
+			this.products = products;
+		}
+		public Product[] getProducts() {
+			return products;
+		}
+		
+		public void deal() {
+			double summ=0;
+			for (Product p:products) {
+				summ+=p.getProductPrice();
+			}
+			double buyerMoney=buyer.getMoney()-summ;
+			buyer.setMoney(buyerMoney);
 			
+			double sellerMoney=seller.getMoney()+summ;
+			seller.setMoney(sellerMoney);
 		}
-		public double fullPrice (double totalprice) {
-			return totalprice;
+		
+		public Deal(User seller, User buyer, Product[] products) {
+			super();
+			this.seller = seller;
+			this.buyer = buyer;
+			this.products = products;
 		}
-		public void Check () {
-			System.out.println("Продавец: "+this.seller);			
-			System.out.println("Покупатель: "+this.buyer);
-			System.out.println("Время покупки: "+this.buyTime);
-			for (Product element: products) {
-				System.out.println("Товар: "+element.getName()+" Цена:"+element.getPrice());
-			}			
-		}
+	
+		
+//		public void Check () {
+//			System.out.println("Продавец: "+this.seller);			
+//			System.out.println("Покупатель: "+this.buyer);
+//			System.out.println("Время покупки: "+this.buyTime);
+//			for (Product element: products) {
+//				System.out.println("Товар: "+element.getName()+" Цена:"+element.getPrice());
+//			}			
+//		}
 }
 

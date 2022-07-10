@@ -4,12 +4,15 @@ public class Product {
 	
 		protected String name;
 		protected double price;
-		protected int quantity;
+		protected double quantity;
 		protected boolean isTax;
-//		double salePrice;
 
-		public Product () {
-			super ();
+			
+		public Product(String type, String name, double price, double quantity) {
+			super();
+			this.name = name;
+			this.price = price;
+			this.quantity = quantity;
 		}
 		public void setName (String name) {
 			this.name=name;
@@ -23,32 +26,33 @@ public class Product {
 		public double getPrice() {
 			return price;
 		}
-		public void setQuantity (int quantity) {
+		public void setQuantity (double quantity) {
 			this.quantity=quantity;
 		}
-		public int getQuantity() {
+		public double getQuantity() {
 			return quantity;
 		}
-		public void setIsTax (boolean isTax) {
-			this.isTax=isTax;
-		}
-		public boolean getIsTaxy() {
-			return isTax;
-		}
-		
-		
-		public double discount() {
+//		public void setIsTax (boolean isTax) {
+//			this.isTax=isTax;
+//		}
+//		public boolean getIsTaxy() {
+//			return isTax;
+//		}
+				
+		public double getDiscount() {
 			if (quantity>=2) {
-				return 0.5;
+				return 0.2;
 			}
 			else {
 				return 1;
 			}
 		}
 		
-		public double salePrice(int quantity, double price) {
+		public double getFullPrice() {
 			return quantity*price;
 		}
 		
-		
+		public double getProductPrice() {
+			return price * quantity * getDiscount();
+		}
 }
