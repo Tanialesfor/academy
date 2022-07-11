@@ -1,5 +1,7 @@
 package by.academy.deal;
 
+import by.academy.lesson8.Phone;
+
 public class Product {
 	
 		protected String name;
@@ -7,13 +9,21 @@ public class Product {
 		protected double quantity;
 		protected boolean isTax;
 
-			
-		public Product(String type, String name, double price, double quantity) {
+		public Product () {
+				super ();
+		}
+		
+		public Product(String name, double price, double quantity) {
 			super();
 			this.name = name;
 			this.price = price;
 			this.quantity = quantity;
 		}
+		
+		public void print() {
+			System.out.println("Итого по продукту:");
+		}
+		
 		public void setName (String name) {
 			this.name=name;
 		}
@@ -40,13 +50,9 @@ public class Product {
 //		}
 				
 		public double getDiscount() {
-			if (quantity>=2) {
-				return 0.2;
+			return 1;
 			}
-			else {
-				return 1;
-			}
-		}
+		
 		
 		public double getFullPrice() {
 			return quantity*price;
@@ -54,5 +60,28 @@ public class Product {
 		
 		public double getProductPrice() {
 			return price * quantity * getDiscount();
+		}
+		
+		public boolean equals (Product product) {
+			if (getPrice()==product.getFullPrice()) {
+				return true;
+			} else {
+				return false;
+			}
+		}
+//		public int hashCode () {
+//			return this.hashcode;
+//		} 
+		
+		public String toString() {
+			StringBuilder stbP = new StringBuilder();
+			stbP.append("Продукт: [название=");
+			stbP.append(name);
+			stbP.append(", цена=");
+			stbP.append(price);
+			stbP.append(", количество=");
+			stbP.append(quantity);
+			stbP.append("]");
+			return stbP.toString();
 		}
 }

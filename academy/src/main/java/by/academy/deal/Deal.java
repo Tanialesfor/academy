@@ -1,6 +1,7 @@
 package by.academy.deal;
 
 import java.time.LocalDateTime;
+import java.util.Arrays;
 
 public class Deal {
 	
@@ -36,8 +37,8 @@ public class Deal {
 		
 		public void deal() {
 			double summ=0;
-			for (Product p:products) {
-				summ+=p.getProductPrice();
+			for (Product element:products) {
+				summ+=element.getProductPrice();
 			}
 			double buyerMoney=buyer.getMoney()-summ;
 			buyer.setMoney(buyerMoney);
@@ -52,7 +53,9 @@ public class Deal {
 			this.buyer = buyer;
 			this.products = products;
 		}
-	
+		public String toString() {
+			return this.buyer+" "+this.seller+" "+this.products;
+		}
 		
 //		public void Check () {
 //			System.out.println("Продавец: "+this.seller);			
