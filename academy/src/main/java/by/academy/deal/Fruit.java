@@ -35,6 +35,15 @@ public class Fruit extends Product{
 			return super.getDiscount();
 		}
 	} 
+	
+	public boolean equals () {
+		System.out.println ("Результат сравнения Fruit equals:");
+		if (this.weight==this.price) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 	public String toString() {
 		StringBuilder stbF = new StringBuilder();
 		stbF.append("Фрукт: [название=");

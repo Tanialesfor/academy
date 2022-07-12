@@ -63,17 +63,33 @@ public class Product {
 		}
 		
 		public boolean equals (Product product) {
-			if (getPrice()==product.getFullPrice()) {
+			System.out.println ("Результат сравнения equals:");
+			if (product.getPrice()==product.getFullPrice()) {
 				return true;
 			} else {
 				return false;
 			}
 		}
+		
 //		public int hashCode () {
 //			return this.hashcode;
 //		} 
 		
-		public String toString() {
+//		public int hashCode() {
+//			
+//			final int prime = 31;
+//			int result = 1;
+//			long temp;
+//			temp = Double.doubleToLongBits();
+//			result = prime * result + (int) (temp ^ (temp >>> 32));
+//			temp = Double.doubleToLongBits(height);
+//			result = prime * result + (int) (temp ^ (temp >>> 32));
+//			temp = Double.doubleToLongBits(width);
+//			result = prime * result + (int) (temp ^ (temp >>> 32));
+//			return result;
+//		}
+		
+			public String toString() {
 			StringBuilder stbP = new StringBuilder();
 			stbP.append("Продукт: [название=");
 			stbP.append(name);

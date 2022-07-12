@@ -33,7 +33,7 @@ public class Deal {
 		}
 		public Product[] getProducts() {
 			return products;
-		}
+		}		
 		
 		public void deal() {
 			double summ=0;

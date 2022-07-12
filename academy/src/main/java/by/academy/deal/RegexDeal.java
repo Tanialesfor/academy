@@ -18,5 +18,6 @@ public class RegexDeal {
 		} else {
 			this.result=false;
 		}
-	}		
+	
+	}
 }

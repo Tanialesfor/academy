@@ -35,6 +35,16 @@ public class Wine extends Product {
 		return super.getDiscount();
 		}
 	}
+	
+	public boolean equals () {
+		System.out.println ("Результат сравнения Wine equals:");
+		if (this.age!=this.price) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
 	public String toString() {
 		StringBuilder stbW = new StringBuilder();
 		stbW.append("Вино: [название=");

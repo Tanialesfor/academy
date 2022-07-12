@@ -35,7 +35,15 @@ public class Cheese extends Product{
 		return super.getDiscount();
 		}
 	}
-	
+	public boolean equals () {
+		System.out.println ("Результат сравнения Cheese equals:");
+		if (this.richness!=this.price) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+		
 	public String toString() {
 		StringBuilder stbC = new StringBuilder();
 		stbC.append("Сыр: [название=");
