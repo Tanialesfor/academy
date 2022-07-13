@@ -1,5 +1,7 @@
 package by.academy.deal;
 
+import java.util.Objects;
+
 public class Fruit extends Product{
 	
 	private String ripeness;
@@ -35,18 +37,30 @@ public class Fruit extends Product{
 			return super.getDiscount();
 		}
 	} 
-	
-	public boolean equals () {
-		System.out.println ("Результат сравнения Fruit equals:");
-		if (this.weight==this.price) {
-			return true;
-		} else {
-			return false;
-		}
+			
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + Objects.hash(ripeness, weight);
+		return result;
 	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!super.equals(obj))
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Fruit other = (Fruit) obj;
+		return Objects.equals(ripeness, other.ripeness)
+				&& Double.doubleToLongBits(weight) == Double.doubleToLongBits(other.weight);
+	}
+	
 	public String toString() {
 		StringBuilder stbF = new StringBuilder();
-		stbF.append("Фрукт: [название=");
+		stbF.append("Продукт: [название=");
 		stbF.append(name);
 		stbF.append(", цена=");
 		stbF.append(price);

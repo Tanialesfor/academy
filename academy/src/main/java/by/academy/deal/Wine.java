@@ -1,5 +1,7 @@
 package by.academy.deal;
 
+import java.util.Objects;
+
 public class Wine extends Product {
 	
 	private int age;
@@ -36,18 +38,28 @@ public class Wine extends Product {
 		}
 	}
 	
-	public boolean equals () {
-		System.out.println ("Результат сравнения Wine equals:");
-		if (this.age!=this.price) {
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + Objects.hash(age, color);
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
 			return true;
-		} else {
+		if (!super.equals(obj))
 			return false;
-		}
+		if (getClass() != obj.getClass())
+			return false;
+		Wine other = (Wine) obj;
+		return age == other.age && Objects.equals(color, other.color);
 	}
 	
 	public String toString() {
 		StringBuilder stbW = new StringBuilder();
-		stbW.append("Вино: [название=");
+		stbW.append("Продукт: [название=");
 		stbW.append(name);
 		stbW.append(", цена=");
 		stbW.append(price);

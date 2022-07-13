@@ -1,8 +1,10 @@
 package by.academy.deal;
 
+import java.util.Objects;
+
 public class User {
 		
-	private String name;
+	private String nickname;
 	private double money;
 	private String phone;
 	private String email;
@@ -11,11 +13,11 @@ public class User {
 	public User () {
 		super();
 	}	
-	public void setName (String name) {
-		this.money=money;
+	public void setNickname (String nickname) {
+		this.nickname=nickname;
 	}
-	public String getName () {
-		return name;
+	public String getNickname () {
+		return nickname;
 	}
 	public void setMoney (double money) {
 		this.money=money;
@@ -35,10 +37,29 @@ public class User {
 	public String getEmail () {
 		return email;
 	}
+	
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(money, nickname);
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		User other = (User) obj;
+		return Double.doubleToLongBits(money) == Double.doubleToLongBits(other.money)
+				&& Objects.equals(nickname, other.nickname);
+	}
+	
 	public String toString() {
 		StringBuilder stbU = new StringBuilder();
 		stbU.append("Пользователь: [имя=");
-		stbU.append(name);
+		stbU.append(nickname);
 		stbU.append(", деньги=");
 		stbU.append(money);
 		stbU.append(", номер телефона=");

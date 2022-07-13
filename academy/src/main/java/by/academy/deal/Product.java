@@ -1,5 +1,7 @@
 package by.academy.deal;
 
+import java.util.Objects;
+
 import by.academy.lesson8.Phone;
 
 public class Product {
@@ -61,34 +63,26 @@ public class Product {
 		public double getProductPrice() {
 			return price * quantity * getDiscount();
 		}
-		
-		public boolean equals (Product product) {
-			System.out.println ("Результат сравнения equals:");
-			if (product.getPrice()==product.getFullPrice()) {
-				return true;
-			} else {
-				return false;
-			}
+					
+		@Override
+		public int hashCode() {
+			return Objects.hash(name, price, quantity);
 		}
-		
-//		public int hashCode () {
-//			return this.hashcode;
-//		} 
-		
-//		public int hashCode() {
-//			
-//			final int prime = 31;
-//			int result = 1;
-//			long temp;
-//			temp = Double.doubleToLongBits();
-//			result = prime * result + (int) (temp ^ (temp >>> 32));
-//			temp = Double.doubleToLongBits(height);
-//			result = prime * result + (int) (temp ^ (temp >>> 32));
-//			temp = Double.doubleToLongBits(width);
-//			result = prime * result + (int) (temp ^ (temp >>> 32));
-//			return result;
-//		}
-		
+
+		@Override
+		public boolean equals(Object obj) {
+			if (this == obj)
+				return true;
+			if (obj == null)
+				return false;
+			if (getClass() != obj.getClass())
+				return false;
+			Product other = (Product) obj;
+			return Objects.equals(name, other.name)
+					&& Double.doubleToLongBits(price) == Double.doubleToLongBits(other.price)
+					&& Double.doubleToLongBits(quantity) == Double.doubleToLongBits(other.quantity);
+		}
+
 			public String toString() {
 			StringBuilder stbP = new StringBuilder();
 			stbP.append("Продукт: [название=");
