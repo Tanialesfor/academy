@@ -106,21 +106,8 @@ public class Main {
 //		System.out.println(wine1.getFullPrice());
 //		System.out.println(wine1.getProductPrice());
 //		
-//		cheese.print();
-//		System.out.println(cheese.getDiscount());
-//		System.out.println(cheese.getFullPrice());
-//		System.out.println(cheese.getProductPrice());
-//		
-//		fruit.print();
-//		System.out.println(fruit.getDiscount());
-//		System.out.println(fruit.getFullPrice());
-//		System.out.println(fruit.getProductPrice());
-//		System.out.println(fruit.toString());
 		
-		
-		
-		
-		
+				
 			
 //		RegexDeal t = new RegexDeal("12.01.1698");
 //		System.out.println(t.result);
