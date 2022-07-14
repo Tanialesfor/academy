@@ -28,13 +28,23 @@ public class Wine extends Product {
 		this.color = color;
 	}
 		
+	
+//	public double getDiscount() {
+//		if (quantity>=4 || price*quantity>200) {
+//			return 0.8;
+//		}
+//		else {
+//		return super.getDiscount();
+//		}
+//	}
+	
 	@Override
-	public double getDiscount() {
+	public double discount() {
 		if (quantity>=4 || price*quantity>200) {
 			return 0.8;
 		}
 		else {
-		return super.getDiscount();
+			return 1;
 		}
 	}
 	

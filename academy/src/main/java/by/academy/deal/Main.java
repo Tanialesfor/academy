@@ -6,63 +6,105 @@ import java.util.Scanner;
 public class Main {
 	public static void main(String[] args) {
 		
-		User user2= new User ();
-		
-		Wine wine=new Wine("Вино Riesling", 25, 4, 2, "белое");
-//		Wine wine2=new Wine("Вино Vina Maipo", 35, 1, 2, "белое");
-		Cheese cheese=new Cheese ("Сыр Mascarpone", 5.6, 5, "Republic of Belarus", 0.78);
-//		Cheese cheese2=new Cheese ("Сыр Сливочный", 3.29, 1, "Republic of Belarus", 0.65);
-		Fruit fruit= new Fruit ("Фрукт Бананы", 4.50, 5, "неспелые", 2.5);
-//		Fruit fruit2= new Fruit ("Фрукт Яблоки", 3.25, 6, "спелые", 1.5);
-		Product bread= new Product ("Хлеб Нарочанский", 2.35, 2);
-		Product milk= new Product ("Молоко Белакт", 3.24, 1);
-		Product chocolate= new Product ("Шоколад Аленка", 3.70, 3);
-		Product cookie= new Product ("Печенье Слодыч", 1.15, 4);
-		Product yogurt= new Product ("Йогурт Активиа", 2.55, 1);
-		Product sausage= new Product ("Колбаса Пражская", 7.46, 1);
-		
-//		Product[] productMenu = new Product[9];
-//		Deal deal = new Deal();
-//		deal.setProducts(productMenu);
-		String [] productMenu=new String[9];
-		productMenu[0]=wine.getName();
-		productMenu[1]=cheese.getName();
-		productMenu[2]=fruit.getName();
-		productMenu[3]=bread.getName();
-		productMenu[4]=milk.getName();
-		productMenu[5]=chocolate.getName();
-		productMenu[6]=cookie.getName();
-		productMenu[7]=yogurt.getName();
-		productMenu[8]=sausage.getName();
-		
-		for (int i=0; i<9; i++)	{
-			System.out.println(productMenu[i]);
-			i++;	
-			}
-			
 		
 		
+		Wine wine1=new Wine("Вино Riesling", 25, 4, 2, "белое");
+		Wine wine2=new Wine("Вино Vina Maipo", 35, 1, 2, "белое");
+		Wine wine3=new Wine("Вино Torres San Valentin Garnacha", 32, 3, 3, "красное");
+		Cheese cheese1=new Cheese ("Сыр Mascarpone", 5.6, 5, "Republic of Belarus", 0.78);
+		Cheese cheese2=new Cheese ("Сыр Сливочный", 3.29, 1, "Republic of Belarus", 0.65);
+		Cheese cheese3=new Cheese ("Сыр Классический", 3.12, 5, "Republic of Belarus", 0.60);
+		Fruit fruit1= new Fruit ("Фрукт Банан", 4.50, 5, "неспелые", 2.5);
+		Fruit fruit2= new Fruit ("Фрукт Яблоко", 3.25, 6, "спелые", 1.5);
+		Fruit fruit3= new Fruit ("Фрукт Апельсин", 5.34, 4, "спелые", 1.8);
+		Fruit fruit4= new Fruit ("Фрукт Персик", 8.79, 2, "неспелые", 0.6);
 		
+		wine1.print();
+		wine1.discount();
+		System.out.println(wine1.getFullPrice());
+		System.out.println(wine1.getCalcFinalPrice());
+		System.out.println(wine1.getAge());
 		
 		Scanner sc= new Scanner(System.in);
+		System.out.println("Введите ваше имя:");
+			User user= new User ();
+			String nick=sc.next();
+			user.setNickname(nick);
+		
+
+		//		Product bread= new Product ("Хлеб Нарочанский", 2.35, 2);
+//		Product milk= new Product ("Молоко Белакт", 3.24, 1);
+//		Product chocolate= new Product ("Шоколад Аленка", 3.70, 3);
+//		Product cookie= new Product ("Печенье Слодыч", 1.15, 4);
+//		Product yogurt= new Product ("Йогурт Активиа", 2.55, 1);
+//		Product sausage= new Product ("Колбаса Пражская", 7.46, 1);
+//		
+		Product[] productList = new Product[9];
+//		Deal deal = new Deal();
+//		deal.setProducts(productMenu);
+		
+		productList[0]=wine1;
+		productList[1]=wine2;
+		productList[2]=wine3;
+		productList[3]=cheese1;
+		productList[4]=cheese2;
+		productList[5]=cheese3;
+		productList[6]=fruit1;
+		productList[7]=fruit2;
+		productList[8]=fruit3;
+		
+		System.out.println("Меню товаров:");
+		for (int i=0; i<9; i++)	{
+			System.out.println(i+1+": "+productList[i].getName());
+			}
+		
+		
+		System.out.println("Введите номер товара из меню:");
+		
+//		if(sc.hasNextInt()) {
+		
+//			while (int n>=1 || n<=9) {
+//				if(n==0) {
+//					System.out.println("Корзина с товарами сформирована");	
+//				}
+//			
+//			n=sc.nextInt();
+//			i=n-1;
+//			System.out.println("Введите необходимое количество данного товара:");
+//			if (sc.hasNextDouble()) {
+//			double q=sc.nextDouble();
+//		    productList[i].setQuantity(q);
+		
+//		}
+//			else {
+//				System.out.println("Количество товара может быть целым или дробным");	
+//			}
+//			}
+//		
+//		}
+//		else {
+//			System.out.println("Номер товара может быть только целым числом");
+//		}
+		
 		
 //		System.out.println("Введите количество товаров вашей покупки:");
-//		int n=sc.nextInt();
-//		Product [] 
-//		System.out.println("Введите номер товара из меню:");
 //		
-//		System.out.println("Введите необходимое количество данного товара:");
+//		Product [] 
+//		
+//		
+//		
 //		
 //		System.out.println("Введите ваше имя:");
 //		User user= new User ();
 //		user.setNickname()=sc.next();
+		System.out.println();
 //		System.out.println("Введите дату вашего рождения согласно шаблону dd/MM/yyyy(dd-MM-yyyy):");
 		
 		
-//		wine.print();
-//		System.out.println(wine.getDiscount());
-//		System.out.println(wine.getFullPrice());
-//		System.out.println(wine.getProductPrice());
+//		wine1.print();
+//		wine1.discount();
+//		System.out.println(wine1.getFullPrice());
+//		System.out.println(wine1.getProductPrice());
 //		
 //		cheese.print();
 //		System.out.println(cheese.getDiscount());
@@ -88,7 +130,8 @@ public class Main {
 //		
 //		RegexDeal t3 = new RegexDeal("12-01-1698");
 //		System.out.println(t3.result);		
-		
+			
+				
 		sc.close();
 	}
 }

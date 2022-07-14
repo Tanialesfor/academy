@@ -39,7 +39,7 @@ public class Deal {
 		public void deal() {
 			double summ=0;
 			for (Product element:products) {
-				summ+=element.getProductPrice();
+				summ+=element.getCalcFinalPrice();
 			}
 			double buyerMoney=buyer.getMoney()-summ;
 			buyer.setMoney(buyerMoney);

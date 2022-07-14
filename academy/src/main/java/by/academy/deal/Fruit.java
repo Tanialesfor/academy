@@ -28,16 +28,25 @@ public class Fruit extends Product{
 		this.ripeness = ripeness;
 		this.weight = weight;
 	}
+	
+//	public double getDiscount() {
+//		if (weight>=10) {
+//			return 0.75;
+//		}
+//		else {
+//			return super.getDiscount();
+//		}
+//	} 
 	@Override
-	public double getDiscount() {
+	public double discount() {
 		if (weight>=10) {
 			return 0.75;
 		}
 		else {
-			return super.getDiscount();
-		}
-	} 
-			
+		return 1;
+		}		
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -45,6 +54,7 @@ public class Fruit extends Product{
 		result = prime * result + Objects.hash(ripeness, weight);
 		return result;
 	}
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)

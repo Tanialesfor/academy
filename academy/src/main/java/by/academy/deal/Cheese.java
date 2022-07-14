@@ -28,13 +28,23 @@ public class Cheese extends Product{
 		this.countryProduce = countryProduce;
 		this.richness = richness;
 	}
+	
+//	public double getDiscount() {
+//		if (quantity>=5) {
+//			return 0.85;
+//		}
+//		else {
+//		return super.getDiscount();
+//		}
+//	}
+	
 	@Override
-	public double getDiscount() {
+	public double discount() {
 		if (quantity>=5) {
 			return 0.85;
 		}
 		else {
-		return super.getDiscount();
+		return 1;
 		}
 	}
 	
@@ -45,6 +55,7 @@ public class Cheese extends Product{
 		result = prime * result + Objects.hash(countryProduce, richness);
 		return result;
 	}
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)

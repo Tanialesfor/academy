@@ -4,7 +4,7 @@ import java.util.Objects;
 
 import by.academy.lesson8.Phone;
 
-public class Product {
+public abstract class Product {
 	
 		protected String name;
 		protected double price;
@@ -51,17 +51,18 @@ public class Product {
 //			return isTax;
 //		}
 				
-		public double getDiscount() {
-			return 1;
-			}
-		
+//		public double getDiscount() {
+//			return 1;
+//			}
 		
 		public double getFullPrice() {
 			return quantity*price;
 		}
 		
-		public double getProductPrice() {
-			return price * quantity * getDiscount();
+		abstract double discount ();
+		
+		public double getCalcFinalPrice() {
+			return price * quantity * discount();
 		}
 					
 		@Override
