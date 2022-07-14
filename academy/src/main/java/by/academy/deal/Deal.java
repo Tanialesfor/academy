@@ -10,11 +10,26 @@ public class Deal {
 	private User buyer;
 	private Product[] products;
 	private LocalDateTime buyTime;
-							
-		public Deal() {
-			super();
-		}
+	private int index=0;						
 		
+	public Deal() {
+			super();
+			this.products=new Product[10];
+		}
+	private void grow() {
+		int newLength=(int)(products.length==0 ? 1:products.length*1.5);
+//		Product[] newProducts=
+	}
+	public Product getProduct (int productIndex) {
+		return products[productIndex];
+	}
+	
+//	public void addProduct(Product products) {
+//		if(index==products.length) {
+//		products[index++]=product;
+		
+	
+	
 		public void setSeller(User seller) {
 			this.seller = seller;
 		}
@@ -53,6 +68,7 @@ public class Deal {
 			this.seller = seller;
 			this.buyer = buyer;
 			this.products = products;
+			this.index=products.length;
 		}
 		
 		@Override

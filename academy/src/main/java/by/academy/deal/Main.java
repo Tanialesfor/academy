@@ -26,13 +26,13 @@ public class Main {
 		System.out.println(wine1.getAge());
 		
 		Scanner sc= new Scanner(System.in);
-		System.out.println("Введите ваше имя:");
-			User user= new User ();
-			String nick=sc.next();
-			user.setNickname(nick);
+//		System.out.println("Введите ваше имя:");
+//			User user= new User ();
+//			String nick=sc.next();
+//			user.setNickname(nick);
 		
 
-		//		Product bread= new Product ("Хлеб Нарочанский", 2.35, 2);
+//		Product bread= new Product ("Хлеб Нарочанский", 2.35, 2);
 //		Product milk= new Product ("Молоко Белакт", 3.24, 1);
 //		Product chocolate= new Product ("Шоколад Аленка", 3.70, 3);
 //		Product cookie= new Product ("Печенье Слодыч", 1.15, 4);
@@ -55,7 +55,7 @@ public class Main {
 		
 		System.out.println("Меню товаров:");
 		for (int i=0; i<9; i++)	{
-			System.out.println(i+1+": "+productList[i].getName());
+			System.out.println(i+1+": "+productList[i].getName()+"-"+productList[i].getPrice()+"");
 			}
 		
 		
