@@ -2,12 +2,12 @@ package by.academy.deal;
 
 import java.util.Objects;
 
-public class User {
+public class User extends BelarusPhoneValidator{
 		
 	private String nickname;
 	private double money;
-	private String phone;
-	private String email;
+	protected String phone;
+	protected String email;
 	private String dateOfBirth;
 	
 	public User () {
@@ -27,6 +27,13 @@ public class User {
 	}
 	public void setPhone (String phone) {
 		this.phone=phone;
+	}
+	public void setValidPhone(String phone) {
+		if (isValid(phone)) {
+			this.phone=phone;
+		} else {
+			System.out.println("Некорректный телефон: "+phone);
+		}
 	}
 	public String getPhone () {
 		return phone;
