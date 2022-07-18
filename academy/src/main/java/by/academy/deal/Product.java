@@ -9,8 +9,7 @@ public abstract class Product {
 		protected String name;
 		protected double price;
 		protected double quantity;
-		protected boolean isTax;
-
+		
 		public Product () {
 				super ();
 		}
@@ -44,17 +43,7 @@ public abstract class Product {
 		public double getQuantity() {
 			return quantity;
 		}
-//		public void setIsTax (boolean isTax) {
-//			this.isTax=isTax;
-//		}
-//		public boolean getIsTaxy() {
-//			return isTax;
-//		}
-				
-//		public double getDiscount() {
-//			return 1;
-//			}
-		
+
 		public double getFullPrice() {
 			return quantity*price;
 		}

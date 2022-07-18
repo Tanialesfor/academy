@@ -8,8 +8,14 @@ public class Main {
 				 		
 		User user= new User ();
 		User user1=new User ();
+		User user2=new User ();
+		User user3=new User ();
+			
 		user.setValidPhone("+37623 125-12-56");
 		user1.setValidPhone("+37529 579-23-25");
+		user2.setValidAmericanPhone("+22356 579-23-25");
+		user3.setValidEmail("dfgjrty@ghj.fghytuio");
+		
 		
 		Wine wine1=new Wine("Вино Riesling", 25, 4, 2, "белое");
 		Wine wine2=new Wine("Вино Vina Maipo", 35, 1, 2, "белое");
@@ -64,6 +70,10 @@ public class Main {
 				
 				if(n==0) {
 					System.out.println("Корзина с товарами сформирована");	
+					break;
+				}
+				if(n<1 || n>productList.length) {
+					System.out.println("Введен не верный номер товара. Повторите ввод номера товара из меню.");
 					break;
 				}
 				  

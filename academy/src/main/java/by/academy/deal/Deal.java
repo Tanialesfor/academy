@@ -3,6 +3,8 @@ package by.academy.deal;
 import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.Objects;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class Deal {
 	
@@ -12,6 +14,8 @@ public class Deal {
 	private LocalDateTime buyTime;
 	private int index=0;						
 		
+//	LocalDate today=new LocalDate.now(); 
+	
 	public Deal() {
 			super();
 			this.products=new Product[10];
@@ -64,6 +68,17 @@ public class Deal {
 		index++;
 	}
 	
+	public void removeProduct(Product[] products) {
+		for (int i=0; i<index;i++)
+	
+			if(products[(index-1)]==null) {
+				index--;	
+			}
+		if(index<0 || index>products.length) {
+			System.out.println("Данного товара нет в корзине товаров. Ввведите другой номер товара");
+		}
+		
+	}
 			
 	public void setSeller(User seller) {
 		this.seller = seller;
