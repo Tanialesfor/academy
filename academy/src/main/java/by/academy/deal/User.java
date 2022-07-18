@@ -12,6 +12,15 @@ public class User{
 	private String email;
 	private String dateOfBirth;
 	
+	public void setDateOfBirth(String dateOfBirth) {
+		RegexDeal regexp = new RegexDeal(dateOfBirth);
+		if (regexp.result==true) {
+			this.dateOfBirth=dateOfBirth;
+		} else {
+			System.out.println("Введенная строка не является датой");
+		}
+	}
+	
 	public User () {
 		super();
 	}
@@ -82,9 +91,9 @@ public class User{
 		return email;
 	}
 	
-	public void setDateOfBirth (String dateOfBirth) {
-		this.dateOfBirth=dateOfBirth;
-	}
+//	public void setDateOfBirth (String dateOfBirth) {
+//		this.dateOfBirth=dateOfBirth;
+//	}
 	public String getDateOfBirth () {
 		return dateOfBirth;
 	}

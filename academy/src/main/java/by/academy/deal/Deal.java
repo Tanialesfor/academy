@@ -68,17 +68,35 @@ public class Deal {
 		index++;
 	}
 	
-	public void removeProduct(Product[] products) {
-		for (int i=0; i<index;i++)
-	
-			if(products[(index-1)]==null) {
-				index--;	
+	public void removeProduct(Product product) {
+		for(int i=products.length-1; i>=0; i--) {
+			if (products[i]!=null) {
+				index=i+1;
+				break;
 			}
-		if(index<0 || index>products.length) {
-			System.out.println("Данного товара нет в корзине товаров. Ввведите другой номер товара");
 		}
-		
+		for (int i=0; i<index;i++) {
+			if (products[i]==product) {
+				for (int j=i; j<index-1; j++) {
+					products[j]=products[j+1];
+				}
+				products[index-1]=null;
+				index=index-1;
+				break;
+			}
+		}
 	}
+		
+//		
+			
+//							if(index<0 || index>=products.length) {
+//					System.out.println("Данного товара нет в корзине товаров. Ввведите другой номер товара для удаления");
+//				}
+//			
+//				
+//		
+//		}
+//	}
 			
 	public void setSeller(User seller) {
 		this.seller = seller;

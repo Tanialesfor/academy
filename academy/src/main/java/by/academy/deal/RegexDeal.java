@@ -4,11 +4,10 @@ import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 
 public class RegexDeal {
-
+	
 	protected boolean result;
 	
 	public RegexDeal (String date) {
-		super();
 		Pattern pattern = Pattern.compile("\\d{2}(\\-|\\/)\\d{2}(\\-|\\/)\\d{4}");		
 		
 		Matcher matcher = pattern.matcher(date);

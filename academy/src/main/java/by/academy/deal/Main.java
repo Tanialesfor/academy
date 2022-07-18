@@ -11,10 +11,16 @@ public class Main {
 		User user2=new User ();
 		User user3=new User ();
 			
+		Scanner sc= new Scanner(System.in);	
+		
 		user.setValidPhone("+37623 125-12-56");
 		user1.setValidPhone("+37529 579-23-25");
 		user2.setValidAmericanPhone("+22356 579-23-25");
 		user3.setValidEmail("dfgjrty@ghj.fghytuio");
+		
+		System.out.println("Введите дату:");
+		String dateOfBirth=sc.next();
+		user.setDateOfBirth(dateOfBirth);
 		
 		
 		Wine wine1=new Wine("Вино Riesling", 25, 4, 2, "белое");
@@ -61,9 +67,10 @@ public class Main {
 			}
 		System.out.println("0: Если хотите выйти из меню и завершить выбор товаров");
 			
-		Scanner sc= new Scanner(System.in);			
-		int n=-1;		
+		int n=-1;	
+		boolean skip=false;
 		do {
+			skip=false;
 			System.out.println("Введите номер товара из меню:");			
 			if(sc.hasNextInt()) {
 				n=sc.nextInt();
@@ -74,7 +81,20 @@ public class Main {
 				}
 				if(n<1 || n>productList.length) {
 					System.out.println("Введен не верный номер товара. Повторите ввод номера товара из меню.");
-					break;
+					skip=true;
+					continue;
+				}
+				
+				for (int i=0;i<cart.length;i++) {
+					if (cart[i]==productList[n-1] && cart.length>0) {
+						skip=true;
+						System.out.println("Данный товар уже добавлен в корзину");
+						break;
+					}
+				}
+				
+				if (skip==true) {
+					continue;
 				}
 				  
 				System.out.println("Введите необходимое количество данного товара:");
@@ -91,17 +111,13 @@ public class Main {
 			else {
 				System.out.println("Номер товара может быть только целым числом");
 			}	 
-		}	while (n>=1 && n<=productList.length);   
+		}	while (n>=1 && n<=productList.length || skip==true);   
 									
 		for (int i=0; i<cartIndex; i++)	{
 			System.out.println(i+1+": "+cart[i].getName()+" - "+cart[i].getPrice()+" BYN" + " - "+cart[i].getQuantity()+" ед.");
 			}
 		
-//				  for (int i=0; i<productList.length; i++) {
-//				    	i=n-1;
-//				    	productList[i].setQuantity(q);
-//				    }
-			
+				  
 			
 		
 		//Deal deal = new Deal();
