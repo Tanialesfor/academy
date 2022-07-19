@@ -4,7 +4,6 @@ import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.Objects;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 public class Deal {
 	
@@ -12,10 +11,10 @@ public class Deal {
 	private User buyer;
 	private Product[] products;
 	private LocalDateTime buyTime;
+	private LocalDate deadLineDate;
 	private int index=0;						
 		
-//	LocalDate today=new LocalDate.now(); 
-	
+
 	public Deal() {
 			super();
 			this.products=new Product[10];
@@ -38,7 +37,11 @@ public class Deal {
 		
 		double sellerMoney=seller.getMoney()+summ;
 		seller.setMoney(sellerMoney);
+		
+		this.deadLineDate = LocalDate.now().plusDays(10);
 	}
+		    	
+	
 	
 	public Deal(User seller, User buyer, Product[] products) {
 		super();
@@ -46,6 +49,7 @@ public class Deal {
 		this.buyer = buyer;
 		this.products = products;
 		this.index=products.length;
+		this.deadLineDate = LocalDate.now().plusDays(10);
 	}
 	
 	
@@ -75,6 +79,10 @@ public class Deal {
 				break;
 			}
 		}
+		if(index<0 || index>=products.length) {
+			System.out.println("Данного товара нет в корзине товаров. Удаление не возможно");
+			return;
+		}		
 		for (int i=0; i<index;i++) {
 			if (products[i]==product) {
 				for (int j=i; j<index-1; j++) {
@@ -86,17 +94,7 @@ public class Deal {
 			}
 		}
 	}
-		
-//		
-			
-//							if(index<0 || index>=products.length) {
-//					System.out.println("Данного товара нет в корзине товаров. Ввведите другой номер товара для удаления");
-//				}
-//			
-//				
-//		
-//		}
-//	}
+					
 			
 	public void setSeller(User seller) {
 		this.seller = seller;

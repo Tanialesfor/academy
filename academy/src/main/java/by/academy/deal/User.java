@@ -12,6 +12,10 @@ public class User{
 	private String email;
 	private String dateOfBirth;
 	
+	public User () {
+		super();
+	}
+	
 	public void setDateOfBirth(String dateOfBirth) {
 		RegexDeal regexp = new RegexDeal(dateOfBirth);
 		if (regexp.result==true) {
@@ -20,26 +24,7 @@ public class User{
 			System.out.println("Введенная строка не является датой");
 		}
 	}
-	
-	public User () {
-		super();
-	}
-	
-//	public DateOfBirth (String date) {
-//		super (date);
-//		
-//		this.dateOfBirth=date;
-//		Pattern pattern = Pattern.compile("\\d{2}(\\-|\\/)\\d{2}(\\-|\\/)\\d{4}");		
-//		
-//		Matcher matcher = pattern.matcher(dateOfBirth);
-//		
-//		if (matcher.find()) {
-//			this.result=true;
-//		} else {
-//			this.result=false;
-//		}
-//	
-//	}
+			
 	public void setNickname (String nickname) {
 		this.nickname=nickname;
 	}
@@ -91,9 +76,6 @@ public class User{
 		return email;
 	}
 	
-//	public void setDateOfBirth (String dateOfBirth) {
-//		this.dateOfBirth=dateOfBirth;
-//	}
 	public String getDateOfBirth () {
 		return dateOfBirth;
 	}
