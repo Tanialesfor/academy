@@ -29,14 +29,6 @@ public class Fruit extends Product{
 		this.weight = weight;
 	}
 	
-//	public double getDiscount() {
-//		if (weight>=10) {
-//			return 0.75;
-//		}
-//		else {
-//			return super.getDiscount();
-//		}
-//	} 
 	@Override
 	public double discount() {
 		if (weight>=10) {

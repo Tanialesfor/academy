@@ -27,16 +27,6 @@ public class Wine extends Product {
 		this.age = age;
 		this.color = color;
 	}
-		
-	
-//	public double getDiscount() {
-//		if (quantity>=4 || price*quantity>200) {
-//			return 0.8;
-//		}
-//		else {
-//		return super.getDiscount();
-//		}
-//	}
 	
 	@Override
 	public double discount() {

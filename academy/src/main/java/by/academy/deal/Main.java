@@ -18,53 +18,51 @@ public class Main {
 		Scanner sc= new Scanner(System.in);	
 		
 		System.out.println("Реализация задания №3:");
-		RegexDeal t = new RegexDeal("12.01.1698");
-		System.out.println(t.result);
+		System.out.println("Введите дату:");
+		String data=sc.next();
+		RegexDeal d = new RegexDeal(data);
+		System.out.println(d.result);
 		
-		RegexDeal t2 = new RegexDeal("12/01/1698");
-		System.out.println(t2.result);
-		
-		RegexDeal t3 = new RegexDeal("12-01-1698");
-		System.out.println(t3.result);		
-		
-//		System.out.println("Реализация задания №4:");
-//		System.out.println("Введите дату согласно шаблону dd-MM-yyyy(dd/MM/yyyy):");
-//		String str=sc.next();
-//		DateTimeFormatter formatterDTa=DateTimeFormatter.ofPattern("dd-MM-yyyy", Locale.US);
-//		DateTimeFormatter formatterDTb=DateTimeFormatter.ofPattern("dd/MM/yyyy", Locale.US);
-//		LocalDate lda=LocalDate.parse(str, formatterDTa);	
-//		LocalDate ldb=LocalDate.parse(str, formatterDTb);
-//		System.out.println("День: "+lda.getDayOfMonth());
-//		System.out.println("Месяц: "+lda.getMonth());
-//		System.out.println("Year: "+lda.getYear());
+//		RegexDeal t2 = new RegexDeal("12/01/1698");
+//		System.out.println(t2.result);
 //		
-//		System.out.println("День: "+ldb.getDayOfMonth());
-//		System.out.println("Месяц: "+ldb.getMonth());
-//		System.out.println("Year: "+ldb.getYear());
+//		RegexDeal t3 = new RegexDeal("12-01-1698");
+//		System.out.println(t3.result);		
+		
+		System.out.println("Реализация задания №4:");
+			if(d.regexA(data)==true) {
+				DateTimeFormatter formatterDTa=DateTimeFormatter.ofPattern("dd/MM/yyyy", Locale.US);
+				LocalDate lda=LocalDate.parse(data, formatterDTa);	
+				System.out.println("День: "+lda.getDayOfMonth());
+				System.out.println("Месяц: "+lda.getMonth());
+				System.out.println("Year: "+lda.getYear());
+			}
+			if(d.regexB(data)==true) {
+				DateTimeFormatter formatterDTb=DateTimeFormatter.ofPattern("dd-MM-yyyy", Locale.US);
+				LocalDate ldb=LocalDate.parse(data, formatterDTb);	
+				System.out.println("День: "+ldb.getDayOfMonth());
+				System.out.println("Месяц: "+ldb.getMonth());
+				System.out.println("Year: "+ldb.getYear());
+				}
+			else {
+				System.out.println("Введенная дата не соответствует не одному из патернов dd-MM-yyyy(dd/MM/yyyy).");
+			}
 		
 		
-		System.out.println("Реализация заданий №5 и №9:");
-		user.setValidPhone("+37623 125-12-56");
-		user1.setValidPhone("+37529 579-23-25");
-		user2.setValidAmericanPhone("+22356 579-23-25");
-		user3.setValidEmail("dfgjrty@ghj.fghytuio");
-		
-		System.out.println("Реализация задания №8:");
-		System.out.println("Введите дату вашего рождения согласно шаблону dd/MM/yyyy(dd-MM-yyyy):");
-		String dateOfBirth=sc.next();
-		user.setDateOfBirth(dateOfBirth);
+//		System.out.println("Реализация заданий №5 и №9:");
+//		user.setValidPhone("+37623 125-12-56");
+//		user1.setValidPhone("+37529 579-23-25");
+//		user2.setValidAmericanPhone("+22356 579-23-25");
+//		user3.setValidEmail("dfgjrty@ghj.fghytuio");
+//		
+//		System.out.println("Реализация задания №8:");
+//		System.out.println("Введите дату вашего рождения согласно шаблону dd/MM/yyyy(dd-MM-yyyy):");
+//		String dateOfBirth=sc.next();
+//		user.setDateOfBirth(dateOfBirth);
 		
 	
 		System.out.println("Основная реализация:");	
-		
-		System.out.println("Введите ваше имя (покупатель):");
-		String nb=sc.next();
-		user1.setNickname(nb);
-		System.out.println("Введите ваше имя (продавец):");
-		String ns=sc.next();
-		user2.setNickname(ns);
-		
-		
+					
 		Wine wine1=new Wine("Вино Riesling", 25, 4, 2, "белое");
 		Wine wine2=new Wine("Вино Vina Maipo", 35, 1, 2, "белое");
 		Wine wine3=new Wine("Вино Torres San Valentin Garnacha", 32, 3, 3, "красное");
@@ -82,10 +80,7 @@ public class Main {
 //		System.out.println(wine1.getCalcFinalPrice());
 //		System.out.println(wine1.getAge());				
 		
-//		System.out.println("Введите ваше имя:");
-//			User user= new User ();
-//			String nick=sc.next();
-//			user.setNickname(nick);				
+						
 		
 		Product[] productList = new Product[10];	
 		
@@ -100,8 +95,8 @@ public class Main {
 		productList[8]=fruit3;
 		productList[9]=fruit4;
 		
-		Product[] cart = new Product[100];	
-		int cartIndex=0;
+		Product[] products = new Product[100];	
+		int productsIndex=0;
 		
 		System.out.println("Меню товаров:");
 		for (int i=0; i<productList.length; i++)	{
@@ -127,8 +122,8 @@ public class Main {
 					continue;
 				}
 				
-				for (int i=0;i<cart.length;i++) {
-					if (cart[i]==productList[n-1] && cart.length>0) {
+				for (int i=0;i<products.length;i++) {
+					if (products[i]==productList[n-1] && products.length>0) {
 						skip=true;
 						System.out.println("Данный товар уже добавлен в корзину");
 						break;
@@ -142,9 +137,9 @@ public class Main {
 				System.out.println("Введите необходимое количество данного товара:");
 				if (sc.hasNextDouble()) {
 					double q=sc.nextDouble();
-					cart[cartIndex]=productList[n-1];
-					cart[cartIndex].setQuantity(q);
-					cartIndex++;
+					products[productsIndex]=productList[n-1];
+					products[productsIndex].setQuantity(q);
+					productsIndex++;
 				}
 				else {
 					System.out.println("Количество товара может быть целым или дробным");
@@ -155,14 +150,33 @@ public class Main {
 			}	 
 		}	while (n>=1 && n<=productList.length || skip==true);   
 									
-		for (int i=0; i<cartIndex; i++)	{
-			System.out.println(i+1+": "+cart[i].getName()+" - "+cart[i].getPrice()+" BYN" + " - "+cart[i].getQuantity()+" ед.");
+		for (int i=0; i<productsIndex; i++)	{
+			System.out.println(i+1+": "+products[i].getName()+" - "+products[i].getPrice()+" BYN" + " - "+products[i].getQuantity()+" ед.");
 			}
 				  
-			
+		System.out.println("Введите ваше имя (покупатель):");
+		String name=sc.next();
+		user1.setNickname(name);
+		System.out.println("Введите количество денежных средств в наличии:");
+		double money=sc.nextDouble();
+		user1.setMoney(money);
+		user2.setNickname("Seller1");
+//		System.out.println("Введите номер мобильного телефона:");
+//		String phone=sc.next();
+//		user1.setPhone(phone);
+//		System.out.println("Введите email:");
+//		String email=sc.next();
+//		user1.setEmail(email);
+//		System.out.println("Реализация задания №8:");
+//		System.out.println("Введите дату вашего рождения согласно шаблону dd/MM/yyyy(dd-MM-yyyy):");
+//		String dateOfBirth=sc.next();
+//		user.setDateOfBirth(dateOfBirth);
 		
-		//Deal deal = new Deal();
-
+		
+		Deal deal = new Deal(user2, user1, products);		
+		
+		deal.check();
+		
 		
 			sc.close();	
 	}	 	

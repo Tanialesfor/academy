@@ -29,15 +29,6 @@ public class Cheese extends Product{
 		this.richness = richness;
 	}
 	
-//	public double getDiscount() {
-//		if (quantity>=5) {
-//			return 0.85;
-//		}
-//		else {
-//		return super.getDiscount();
-//		}
-//	}
-	
 	@Override
 	public double discount() {
 		if (quantity>=5) {

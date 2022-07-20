@@ -137,13 +137,13 @@ public class Deal {
 		return this.buyer+" "+this.seller+" "+this.products;
 	}
 	
-//		public void Check () {
-//			System.out.println("Продавец: "+this.seller);			
-//			System.out.println("Покупатель: "+this.buyer);
-//			System.out.println("Время покупки: "+this.buyTime);
-//			for (Product element: products) {
-//				System.out.println("Товар: "+element.getName()+" Цена:"+element.getPrice());
-//			}			
-//		}
+		public void check () {
+			System.out.println("Продавец: "+seller.getNickname());			
+			System.out.println("Покупатель: "+buyer.getNickname());
+			System.out.println("Время покупки: "+(this.buyTime=LocalDateTime.now()));
+			for (Product element: products) {
+				System.out.println("Товар: "+element.getName()+":"+" Количество:"+element.getQuantity()+" *"+" Цена:"+element.getPrice()+" ="+" Стоимость:"+element.getCalcFinalPrice());
+			}			
+		}
 }
 
