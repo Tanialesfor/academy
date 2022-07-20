@@ -14,7 +14,7 @@ public enum Season {
  SUMMER (+20){
  @Override
  public void getDescription() {
-	 System.out.println("Теплое время года: ");
+	 System.out.println("Теплое время года");
  }
  },
  
@@ -22,26 +22,30 @@ public enum Season {
  AUTUMN(+12){
 	 @Override
 	 public void getDescription() {
-		 System.out.println("Холодное время года: ");
+		 System.out.println("Холодное время года");
 	 }
 	 },
  WINTER(-6){
 	 @Override
 	 public void getDescription() {
-		 System.out.println("Холодное время года: ");
+		 System.out.println("Холодное время года");
 	 }
 	 },
  SPRING(+5){
 	 @Override
 	 public void getDescription() {
-		 System.out.println("Холодное время года: ");
+		 System.out.println("Холодное время года");
 	 }
 	 };
-	private int temperature;
+	private int averageTemperature;
 	
-	Season(int temperature){
-			this.temperature=temperature;
+	Season(int averageTemperature){
+			this.averageTemperature=averageTemperature;
 	}
+	public int getAverageTemperature () {
+		return averageTemperature;
+	}
+	
 	
 	public abstract void getDescription(); 
 		
