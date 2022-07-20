@@ -177,8 +177,7 @@ public class Main {
 		
 		deal.check();
 		
-		
-			sc.close();	
+		sc.close();	
 	}	 	
 }
 			
