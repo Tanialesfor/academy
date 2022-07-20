@@ -142,16 +142,18 @@ public class Deal {
 	}
 	
 		public void check () {
+			System.out.println("Итоговый чек:");
 			System.out.println("Продавец: "+seller.getNickname());			
 			System.out.println("Покупатель: "+buyer.getNickname());
 			System.out.println("Время покупки: "+ (this.buyTime=LocalDateTime.now()));
-//			for (Product element: products) {
-//				System.out.println("Товар: "+element.getName()+":"+" Количество:"+element.getQuantity()+" *"+" Цена:"+element.getPrice()+" ="+" Стоимость:"+element.getCalcFinalPrice());
-//			}
+
 			for (int i=0;i<index;i++) {
 				System.out.println("Товар: "+products[i].getName()+":"+" Количество:"+products[i].getQuantity()+" *"+" Цена:"+products[i].getPrice()+" ="+" Стоимость:"+products[i].getCalcFinalPrice());
 			}			
-			System.out.println("Итоговая сумма сделки: "+this.summ);			
+			System.out.println("Итоговая сумма сделки: "+this.summ);
+			System.out.println("Внесено покупателем: "+(buyer.getMoney()+this.summ));
+			System.out.println("Сдача покупателя: "+buyer.getMoney());
+			
 		}
 }
 

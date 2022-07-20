@@ -21,11 +21,6 @@ public class Main {
 		RegexDeal d = new RegexDeal(data);
 		System.out.println(d.result);
 		
-//		RegexDeal t2 = new RegexDeal("12/01/1698");
-//		System.out.println(t2.result);
-//		
-//		RegexDeal t3 = new RegexDeal("12-01-1698");
-//		System.out.println(t3.result);		
 		
 		System.out.println("Реализация задания №4:");
 			if(d.regexA(data)==true) {
@@ -45,19 +40,32 @@ public class Main {
 			else {
 				System.out.println("Введенная дата не соответствует не одному из патернов dd-MM-yyyy(dd/MM/yyyy).");
 			}
+	
+		System.out.println("Введите ваше имя (покупатель):");
+		String name=sc.next();
+		user1.setNickname(name);
 		
+		System.out.println("Введите количество денежных средств в наличии:");
+		double money=sc.nextDouble();
+		user1.setMoney(money);
+		user2.setNickname("Seller1");
 		
-//		System.out.println("Реализация заданий №5 и №9:");
-//		user.setValidPhone("+37623 125-12-56");
-//		user1.setValidPhone("+37529 579-23-25");
-//		user2.setValidAmericanPhone("+22356 579-23-25");
-//		user3.setValidEmail("dfgjrty@ghj.fghytuio");
-//		
-//		System.out.println("Реализация задания №8:");
-//		System.out.println("Введите дату вашего рождения согласно шаблону dd/MM/yyyy(dd-MM-yyyy):");
-//		String dateOfBirth=sc.next();
-//		user.setDateOfBirth(dateOfBirth);
+		System.out.println("Введите номер мобильного телефона:");
+		String phone=sc.next();
+//		user1.setPhone(phone);
+		user1.setValidPhone(phone);
+//		user1.setValidAmericanPhone(phone);
 		
+		System.out.println("Введите email:");
+		String email=sc.next();
+//		user1.setEmail(email);
+		user1.setValidEmail(email);
+		
+		System.out.println("Реализация задания №8:");
+		System.out.println("Введите дату вашего рождения согласно шаблону dd/MM/yyyy(dd-MM-yyyy):");
+		String dateOfBirth=sc.next();
+		user1.setDateOfBirth(dateOfBirth);
+			
 	
 		System.out.println("Основная реализация:");	
 					
@@ -71,14 +79,6 @@ public class Main {
 		Fruit fruit2= new Fruit ("Фрукт Яблоко", 3.25, 6, "спелые", 1.5);
 		Fruit fruit3= new Fruit ("Фрукт Апельсин", 5.34, 4, "спелые", 1.8);
 		Fruit fruit4= new Fruit ("Фрукт Персик", 8.79, 2, "неспелые", 0.6);
-		
-//		wine1.print();
-//		wine1.discount();
-//		System.out.println(wine1.getFullPrice());
-//		System.out.println(wine1.getCalcFinalPrice());
-//		System.out.println(wine1.getAge());				
-		
-						
 		
 		Product[] productList = new Product[10];	
 		
@@ -98,7 +98,10 @@ public class Main {
 		
 		Deal deal = new Deal();
 //		Deal deal = new Deal(user2, user1, products);		
-			
+		
+		deal.setBuyer(user1);
+		deal.setSeller(user2);
+		
 		int n=-1;	
 		boolean skip=false;		
 		String answer="0";
@@ -210,28 +213,7 @@ public class Main {
 //			System.out.println(i+1+": "+deal.getProduct(i).getName()+" - "+deal.getProduct(i).getPrice()+" BYN" + " - "+deal.getProduct(i).getQuantity()+" ед.");
 //			}
 				  
-		System.out.println("Введите ваше имя (покупатель):");
-		String name=sc.next();
-		user1.setNickname(name);
-		System.out.println("Введите количество денежных средств в наличии:");
-		double money=sc.nextDouble();
-		user1.setMoney(money);
-		user2.setNickname("Seller1");
-		
-		deal.setBuyer(user1);
-		deal.setSeller(user2);
-		
-//		System.out.println("Введите номер мобильного телефона:");
-//		String phone=sc.next();
-//		user1.setPhone(phone);
-//		System.out.println("Введите email:");
-//		String email=sc.next();
-//		user1.setEmail(email);
-//		System.out.println("Реализация задания №8:");
-//		System.out.println("Введите дату вашего рождения согласно шаблону dd/MM/yyyy(dd-MM-yyyy):");
-//		String dateOfBirth=sc.next();
-//		user.setDateOfBirth(dateOfBirth);
-				
+							
 		deal.deal();
 		deal.check();
 		
@@ -243,11 +225,7 @@ public class Main {
 
 		
 		
-//		wine1.print();
-//		wine1.discount();
-//		System.out.println(wine1.getFullPrice());
-//		System.out.println(wine1.getProductPrice());
-//		
+
 		
 				
 			

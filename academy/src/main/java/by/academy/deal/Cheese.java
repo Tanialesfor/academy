@@ -62,7 +62,7 @@ public class Cheese extends Product{
 	
 	public String toString() {
 		StringBuilder stbC = new StringBuilder();
-		stbC.append("Продукт: [название=");
+		stbC.append("[Продукт:");
 		stbC.append(name);
 		stbC.append(", цена=");
 		stbC.append(price);

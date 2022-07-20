@@ -31,7 +31,7 @@ public class Fruit extends Product{
 	
 	@Override
 	public double discount() {
-		if (weight>=10) {
+		if (quantity>=10) {
 			return 0.75;
 		}
 		else {
@@ -62,7 +62,7 @@ public class Fruit extends Product{
 	
 	public String toString() {
 		StringBuilder stbF = new StringBuilder();
-		stbF.append("Продукт: [название=");
+		stbF.append("[Продукт:");
 		stbF.append(name);
 		stbF.append(", цена=");
 		stbF.append(price);

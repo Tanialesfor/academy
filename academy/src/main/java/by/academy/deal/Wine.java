@@ -59,7 +59,7 @@ public class Wine extends Product {
 	
 	public String toString() {
 		StringBuilder stbW = new StringBuilder();
-		stbW.append("Продукт: [название=");
+		stbW.append("[Продукт:");
 		stbW.append(name);
 		stbW.append(", цена=");
 		stbW.append(price);

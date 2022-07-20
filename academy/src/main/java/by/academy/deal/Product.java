@@ -75,7 +75,7 @@ public abstract class Product {
 
 			public String toString() {
 			StringBuilder stbP = new StringBuilder();
-			stbP.append("Продукт: [название=");
+			stbP.append("[Продукт:");
 			stbP.append(name);
 			stbP.append(", цена=");
 			stbP.append(price);
