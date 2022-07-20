@@ -140,7 +140,7 @@ public class Deal {
 		public void check () {
 			System.out.println("Продавец: "+seller.getNickname());			
 			System.out.println("Покупатель: "+buyer.getNickname());
-			System.out.println("Время покупки: "+(this.buyTime=LocalDateTime.now()));
+			System.out.println("Время покупки: "+ (this.buyTime=LocalDateTime.now()));
 			for (Product element: products) {
 				System.out.println("Товар: "+element.getName()+":"+" Количество:"+element.getQuantity()+" *"+" Цена:"+element.getPrice()+" ="+" Стоимость:"+element.getCalcFinalPrice());
 			}			

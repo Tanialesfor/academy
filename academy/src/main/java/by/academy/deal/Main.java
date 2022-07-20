@@ -10,10 +10,8 @@ import java.time.LocalDate;
 public class Main {
 	public static void main(String[] args) {
 				 		
-		User user= new User ();
 		User user1=new User ();
 		User user2=new User ();
-		User user3=new User ();
 			
 		Scanner sc= new Scanner(System.in);	
 		
@@ -95,14 +93,18 @@ public class Main {
 		productList[8]=fruit3;
 		productList[9]=fruit4;
 		
-		Product[] products = new Product[100];	
+		Product[] products = new Product[10];	
 		int productsIndex=0;
+		
+		Deal deal = new Deal(user2, user1, products);		
 		
 		System.out.println("Меню товаров:");
 		for (int i=0; i<productList.length; i++)	{
 			System.out.println(i+1+": "+productList[i].getName()+"-"+productList[i].getPrice()+" BYN");
 			}
 		System.out.println("0: Если хотите выйти из меню и завершить выбор товаров");
+		System.out.println("+: Если хотите добавить товар в корзину");
+		System.out.println("-: Если хотите удалить товар из корзины");
 			
 		int n=-1;	
 		boolean skip=false;
@@ -137,8 +139,8 @@ public class Main {
 				System.out.println("Введите необходимое количество данного товара:");
 				if (sc.hasNextDouble()) {
 					double q=sc.nextDouble();
-					products[productsIndex]=productList[n-1];
-					products[productsIndex].setQuantity(q);
+					deal.addProduct(productList[n-1]);
+					productList[n-1].setQuantity(q);
 					productsIndex++;
 				}
 				else {
@@ -161,6 +163,7 @@ public class Main {
 		double money=sc.nextDouble();
 		user1.setMoney(money);
 		user2.setNickname("Seller1");
+		
 //		System.out.println("Введите номер мобильного телефона:");
 //		String phone=sc.next();
 //		user1.setPhone(phone);
@@ -171,11 +174,9 @@ public class Main {
 //		System.out.println("Введите дату вашего рождения согласно шаблону dd/MM/yyyy(dd-MM-yyyy):");
 //		String dateOfBirth=sc.next();
 //		user.setDateOfBirth(dateOfBirth);
-		
-		
-		Deal deal = new Deal(user2, user1, products);		
-		
-		deal.check();
+				
+//		deal.deal();
+//		deal.check();
 		
 		sc.close();	
 	}	 	

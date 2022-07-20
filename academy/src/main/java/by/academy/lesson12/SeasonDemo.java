@@ -23,7 +23,7 @@ public class SeasonDemo {
 		}
 		Season[] allseasons = Season.values();
 			for(Season s:allseasons ) {
-			s.name();
+			System.out.println(s.name());
 			System.out.println("Средняя температура: "+s.getAverageTemperature());
 			s.getDescription();
 			System.out.println();
