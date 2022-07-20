@@ -96,65 +96,119 @@ public class Main {
 		Product[] products = new Product[10];	
 		int productsIndex=0;
 		
-		Deal deal = new Deal(user2, user1, products);		
-		
-		System.out.println("Меню товаров:");
-		for (int i=0; i<productList.length; i++)	{
-			System.out.println(i+1+": "+productList[i].getName()+"-"+productList[i].getPrice()+" BYN");
-			}
-		System.out.println("0: Если хотите выйти из меню и завершить выбор товаров");
-		System.out.println("+: Если хотите добавить товар в корзину");
-		System.out.println("-: Если хотите удалить товар из корзины");
+		Deal deal = new Deal();
+//		Deal deal = new Deal(user2, user1, products);		
 			
 		int n=-1;	
-		boolean skip=false;
+		boolean skip=false;		
+		String answer="0";
+		
 		do {
-			skip=false;
-			System.out.println("Введите номер товара из меню:");			
-			if(sc.hasNextInt()) {
-				n=sc.nextInt();
-				
-				if(n==0) {
-					System.out.println("Корзина с товарами сформирована");	
+			System.out.println("0: Если хотите выйти из меню и завершить выбор товаров");
+			System.out.println("+: Если хотите добавить товар в корзину");
+			System.out.println("-: Если хотите удалить товар из корзины");			
+			answer=sc.next();
+			switch(answer) {
+				case "+": {
+					System.out.println("Меню товаров:");
+					for (int i=0; i<productList.length; i++)	{
+						System.out.println(i+1+": "+productList[i].getName()+"-"+productList[i].getPrice()+" BYN");
+						}	
+					System.out.println("0: Если хотите выйти в основное меню");					
+					do {
+						skip=false;
+						System.out.println("Введите номер товара из меню:");			
+						if(sc.hasNextInt()) {
+							n=sc.nextInt();
+							
+							if(n==0) {
+//								System.out.println("Корзина с товарами сформирована");	
+								break;
+							}
+							if(n<1 || n>productList.length) {
+								System.out.println("Введен неверный номер товара. Повторите ввод номера товара из меню.");
+								skip=true;
+								continue;
+							}
+							
+							for (int i=0;i<deal.getProducts().length;i++) {
+								if (deal.getProduct(i)==productList[n-1] && deal.getProducts().length>0) {
+									skip=true;
+									System.out.println("Данный товар уже добавлен в корзину");
+									break;
+								}
+							}
+							
+							if (skip==true) {
+								continue;
+							}
+							  
+							System.out.println("Введите необходимое количество данного товара:");
+							if (sc.hasNextDouble()) {
+								double q=sc.nextDouble();
+								deal.addProduct(productList[n-1]);
+								productList[n-1].setQuantity(q);
+								productsIndex++;
+								break;
+							}
+							else {
+								System.out.println("Количество товара может быть целым или дробным");
+							}
+						}
+						else {
+							System.out.println("Номер товара может быть только целым числом");
+						}	 
+					}	while (n>=1 && n<=productList.length || skip==true);   					
 					break;
 				}
-				if(n<1 || n>productList.length) {
-					System.out.println("Введен не верный номер товара. Повторите ввод номера товара из меню.");
-					skip=true;
-					continue;
+				case "-":{
+					System.out.println("Меню товаров:");
+					do {
+						skip=false;
+						System.out.println("Введите номер товара из меню:");			
+						if(sc.hasNextInt()) {
+							n=sc.nextInt();
+							
+							if(n==0) {
+//								System.out.println("Корзина с товарами сформирована");	
+								break;
+							}
+							if(n<1 || n>productList.length) {
+								System.out.println("Введен неверный номер товара. Повторите ввод номера товара из меню.");
+								skip=true;
+								continue;
+							}
+							
+							for (int i=0;i<deal.getProducts().length;i++) {
+								if (deal.getProduct(i)==productList[n-1] && deal.getProducts().length>0) {
+									deal.removeProduct(productList[n-1]);
+									productList[n-1].setQuantity(0);
+									skip=false;									
+									break;
+								}
+							}							
+						}
+						else {
+							System.out.println("Номер товара может быть только целым числом");
+						}	 
+					}	while (skip==true);   		
+					break;
 				}
-				
-				for (int i=0;i<products.length;i++) {
-					if (products[i]==productList[n-1] && products.length>0) {
-						skip=true;
-						System.out.println("Данный товар уже добавлен в корзину");
-						break;
-					}
+				case "0":{
+					break;
 				}
-				
-				if (skip==true) {
-					continue;
-				}
-				  
-				System.out.println("Введите необходимое количество данного товара:");
-				if (sc.hasNextDouble()) {
-					double q=sc.nextDouble();
-					deal.addProduct(productList[n-1]);
-					productList[n-1].setQuantity(q);
-					productsIndex++;
-				}
-				else {
-					System.out.println("Количество товара может быть целым или дробным");
+				default: {
+					System.out.println("Введена некорректная команда. Повторите ввод");
+					answer="continue";
 				}
 			}
-			else {
-				System.out.println("Номер товара может быть только целым числом");
-			}	 
-		}	while (n>=1 && n<=productList.length || skip==true);   
-									
-		for (int i=0; i<productsIndex; i++)	{
-			System.out.println(i+1+": "+products[i].getName()+" - "+products[i].getPrice()+" BYN" + " - "+products[i].getQuantity()+" ед.");
-			}
+		} while (answer.equals("+") || answer.equals("-") || answer.equals("continue"));		
+
+		System.out.println(Arrays.toString(deal.getProducts()));
+		
+//		for (int i=0; i<productsIndex; i++)	{
+//			System.out.println(i+1+": "+deal.getProduct(i).getName()+" - "+deal.getProduct(i).getPrice()+" BYN" + " - "+deal.getProduct(i).getQuantity()+" ед.");
+//			}
 				  
 		System.out.println("Введите ваше имя (покупатель):");
 		String name=sc.next();
@@ -163,6 +217,9 @@ public class Main {
 		double money=sc.nextDouble();
 		user1.setMoney(money);
 		user2.setNickname("Seller1");
+		
+		deal.setBuyer(user1);
+		deal.setSeller(user2);
 		
 //		System.out.println("Введите номер мобильного телефона:");
 //		String phone=sc.next();
@@ -175,8 +232,8 @@ public class Main {
 //		String dateOfBirth=sc.next();
 //		user.setDateOfBirth(dateOfBirth);
 				
-//		deal.deal();
-//		deal.check();
+		deal.deal();
+		deal.check();
 		
 		sc.close();	
 	}	 	

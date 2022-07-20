@@ -12,6 +12,7 @@ public class Deal {
 	private Product[] products;
 	private LocalDateTime buyTime;
 	private LocalDate deadLineDate;
+	private double summ;
 	private int index=0;						
 		
 
@@ -28,10 +29,13 @@ public class Deal {
 	}		
 	
 	public void deal() {
-		double summ=0;
-		for (Product element:products) {
-			summ+=element.getCalcFinalPrice();
-		}
+		this.summ=0;
+		for (int i=0; i<index;i++) {
+			this.summ+=products[i].getCalcFinalPrice();
+		}		
+//		for (Product element:products) {
+//			summ+=element.getCalcFinalPrice();
+//		}
 		double buyerMoney=buyer.getMoney()-summ;
 		buyer.setMoney(buyerMoney);
 		
@@ -73,21 +77,21 @@ public class Deal {
 	}
 	
 	public void removeProduct(Product product) {
+		System.out.println(index);
 		for(int i=products.length-1; i>=0; i--) {
 			if (products[i]!=null) {
 				index=i+1;
 				break;
 			}
 		}
+		System.out.println(index);		
 		if(index<0 || index>=products.length) {
 			System.out.println("Данного товара нет в корзине товаров. Удаление не возможно");
 			return;
 		}		
 		for (int i=0; i<index;i++) {
 			if (products[i]==product) {
-				for (int j=i; j<index-1; j++) {
-					products[j]=products[j+1];
-				}
+				System.arraycopy(products, i+1, products, i, products.length-i-1);
 				products[index-1]=null;
 				index=index-1;
 				break;
@@ -141,9 +145,13 @@ public class Deal {
 			System.out.println("Продавец: "+seller.getNickname());			
 			System.out.println("Покупатель: "+buyer.getNickname());
 			System.out.println("Время покупки: "+ (this.buyTime=LocalDateTime.now()));
-			for (Product element: products) {
-				System.out.println("Товар: "+element.getName()+":"+" Количество:"+element.getQuantity()+" *"+" Цена:"+element.getPrice()+" ="+" Стоимость:"+element.getCalcFinalPrice());
+//			for (Product element: products) {
+//				System.out.println("Товар: "+element.getName()+":"+" Количество:"+element.getQuantity()+" *"+" Цена:"+element.getPrice()+" ="+" Стоимость:"+element.getCalcFinalPrice());
+//			}
+			for (int i=0;i<index;i++) {
+				System.out.println("Товар: "+products[i].getName()+":"+" Количество:"+products[i].getQuantity()+" *"+" Цена:"+products[i].getPrice()+" ="+" Стоимость:"+products[i].getCalcFinalPrice());
 			}			
+			System.out.println("Итоговая сумма сделки: "+this.summ);			
 		}
 }
 
