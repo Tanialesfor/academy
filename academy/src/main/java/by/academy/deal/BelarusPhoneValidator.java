@@ -7,11 +7,12 @@ public class BelarusPhoneValidator implements Validator {
 	
 	@Override
 	public boolean isValid(String string) {
-		Pattern pattern = Pattern.compile("\\+375");
+
+		Pattern pattern = Pattern.compile("\\+375\\d{2}-?\\d{3}-?\\d{2}-?\\d{2}");
 		Matcher matcher = pattern.matcher(string);	
-		if(matcher.lookingAt()) {
+		if(matcher.find()) {
 			return true;
-		}
-		return false;
-	}			
+			}
+			return false;
+	 }			
 }

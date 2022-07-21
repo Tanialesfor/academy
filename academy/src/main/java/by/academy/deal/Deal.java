@@ -33,9 +33,7 @@ public class Deal {
 		for (int i=0; i<index;i++) {
 			this.summ+=products[i].getCalcFinalPrice();
 		}		
-//		for (Product element:products) {
-//			summ+=element.getCalcFinalPrice();
-//		}
+
 		double buyerMoney=buyer.getMoney()-summ;
 		buyer.setMoney(buyerMoney);
 		
@@ -154,6 +152,7 @@ public class Deal {
 			System.out.println("Итоговая сумма сделки: "+this.summ);
 			System.out.println("Внесено покупателем: "+(buyer.getMoney()+this.summ));
 			System.out.println("Сдача покупателя: "+buyer.getMoney());
+			System.out.println("Сумма денежных средств у продавца: "+seller.getMoney());
 		}
 }
 

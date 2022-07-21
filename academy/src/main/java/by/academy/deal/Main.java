@@ -50,17 +50,28 @@ public class Main {
 		user1.setMoney(money);
 		user2.setNickname("Seller1");
 		
-		System.out.println("Введите номер мобильного телефона:");
-		String phone=sc.next();
-//		user1.setPhone(phone);
-		user1.setValidPhone(phone);
-		user1.setValidAmericanPhone(phone);
 		
-		System.out.println("Введите email:");
-		String email=sc.next();
-//		user1.setEmail(email);
-		user1.setValidEmail(email);
+		System.out.println("Реализация заданий №5 и №9 phone/email:");
+		boolean isValidPhone = false;		
+		do {
+			System.out.println("Введите номер мобильного телефона:");  
+			String phone=sc.next();			
+			isValidPhone = user1.setValidPhone(phone);
+		} while (isValidPhone==false); 
 		
+//		System.out.println("Реализация задания №5 AmericanPhoneValidator:");
+//		System.out.println("Введите номер мобильного телефона:");
+//		String phone=sc.next();
+//		user1.setValidAmericanPhone(phone);			
+		
+		boolean isValidEmail = false;		
+		do {
+			System.out.println("Введите email:");  
+			String email=sc.next();			
+			isValidEmail = user1.setValidEmail(email);
+		} while (isValidEmail==false); 
+			
+							
 		System.out.println("Реализация задания №8:");
 		System.out.println("Введите дату вашего рождения согласно шаблону dd/MM/yyyy(dd-MM-yyyy):");
 		String dateOfBirth=sc.next();
@@ -92,9 +103,7 @@ public class Main {
 		productList[8]=fruit3;
 		productList[9]=fruit4;
 		
-		Product[] products = new Product[10];	
-		int productsIndex=0;
-		
+
 		Deal deal = new Deal();
 //		Deal deal = new Deal(user2, user1, products);		
 		
@@ -150,7 +159,6 @@ public class Main {
 								double q=sc.nextDouble();
 								deal.addProduct(productList[n-1]);
 								productList[n-1].setQuantity(q);
-								productsIndex++;
 								break;
 							}
 							else {
@@ -209,10 +217,6 @@ public class Main {
 
 		System.out.println(Arrays.toString(deal.getProducts()));
 		
-//		for (int i=0; i<productsIndex; i++)	{
-//			System.out.println(i+1+": "+deal.getProduct(i).getName()+" - "+deal.getProduct(i).getPrice()+" BYN" + " - "+deal.getProduct(i).getQuantity()+" ед.");
-//			}
-				  
 					
 		deal.deal();
 		deal.check();

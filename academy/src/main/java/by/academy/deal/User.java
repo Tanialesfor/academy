@@ -20,9 +20,9 @@ public class User{
 		RegexDeal regexp = new RegexDeal(dateOfBirth);
 		if (regexp.result==true) {
 			this.dateOfBirth=dateOfBirth;
-			System.out.println("Введенная строка является датой");
+			System.out.println("Введенная строка является датой.");
 		} else {
-			System.out.println("Введенная строка не является датой");
+			System.out.println("Введенная строка не является датой.");
 		}
 	}
 			
@@ -42,13 +42,15 @@ public class User{
 		this.phone=phone;
 	}
 	
-	public void setValidPhone(String phone) {
+	public boolean setValidPhone(String phone) {
 		Validator bpv = new BelarusPhoneValidator();				
 		if (bpv.isValid(phone)) {
 			this.phone=phone;
-			System.out.println("Введен белорусский номер телефона: "+phone);
+			System.out.println("Введен корректный белорусский номер телефона.");
+			return true;
 		} else {
-			System.out.println("Введенный номер телефона не является белорусским: "+phone);
+			System.out.println("Введен некорректный белорусский номер телефона.");
+			return false;
 		}
 	}
 	public void setValidAmericanPhone(String phone) {
@@ -60,6 +62,7 @@ public class User{
 			System.out.println("Введенный номер телефона не является американским: "+phone);
 		}
 	}
+	
 	public String getPhone () {
 		return phone;
 	}
@@ -67,15 +70,19 @@ public class User{
 	public void setEmail (String email) {
 		this.email=email;
 	}
-	public void setValidEmail(String email) {
+	
+	public boolean setValidEmail(String email) {
 		Validator ev = new EmailValidator();				
 		if (ev.isValid(email)) {
 			this.email=email;
-			System.out.println("Введен корректный email: "+email);
+			System.out.println("Email принят.");
+			return true;
 		} else {
-			System.out.println("Некорректный email: "+email);
+			System.out.println("Email неккоректен.");
+			return false;
 		}
 	}
+
 	public String getEmail () {
 		return email;
 	}

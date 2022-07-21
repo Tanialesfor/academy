@@ -40,6 +40,7 @@ public class RegexDeal {
 				
 				if (matcher.find()) {
 					this.result=true;
+					
 				} else {
 					this.result=false;
 				}
