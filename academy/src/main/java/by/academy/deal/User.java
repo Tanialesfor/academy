@@ -20,6 +20,7 @@ public class User{
 		RegexDeal regexp = new RegexDeal(dateOfBirth);
 		if (regexp.result==true) {
 			this.dateOfBirth=dateOfBirth;
+			System.out.println("Введенная строка является датой");
 		} else {
 			System.out.println("Введенная строка не является датой");
 		}
@@ -45,16 +46,18 @@ public class User{
 		Validator bpv = new BelarusPhoneValidator();				
 		if (bpv.isValid(phone)) {
 			this.phone=phone;
+			System.out.println("Введен белорусский номер телефона: "+phone);
 		} else {
-			System.out.println("Некорректный телефон: "+phone);
+			System.out.println("Введенный номер телефона не является белорусским: "+phone);
 		}
 	}
 	public void setValidAmericanPhone(String phone) {
 		Validator apv = new AmericanPhoneValidator();				
 		if (apv.isValid(phone)) {
 			this.phone=phone;
+			System.out.println("Введен американский номер телефона: "+phone);
 		} else {
-			System.out.println("Некорректный телефон: "+phone);
+			System.out.println("Введенный номер телефона не является американским: "+phone);
 		}
 	}
 	public String getPhone () {
@@ -68,6 +71,7 @@ public class User{
 		Validator ev = new EmailValidator();				
 		if (ev.isValid(email)) {
 			this.email=email;
+			System.out.println("Введен корректный email: "+email);
 		} else {
 			System.out.println("Некорректный email: "+email);
 		}

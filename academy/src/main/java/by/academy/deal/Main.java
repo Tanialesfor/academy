@@ -54,7 +54,7 @@ public class Main {
 		String phone=sc.next();
 //		user1.setPhone(phone);
 		user1.setValidPhone(phone);
-//		user1.setValidAmericanPhone(phone);
+		user1.setValidAmericanPhone(phone);
 		
 		System.out.println("Введите email:");
 		String email=sc.next();
@@ -66,7 +66,6 @@ public class Main {
 		String dateOfBirth=sc.next();
 		user1.setDateOfBirth(dateOfBirth);
 			
-	
 		System.out.println("Основная реализация:");	
 					
 		Wine wine1=new Wine("Вино Riesling", 25, 4, 2, "белое");
@@ -198,6 +197,7 @@ public class Main {
 					break;
 				}
 				case "0":{
+					System.out.println("Корзина с товарами сформирована");
 					break;
 				}
 				default: {
@@ -213,9 +213,10 @@ public class Main {
 //			System.out.println(i+1+": "+deal.getProduct(i).getName()+" - "+deal.getProduct(i).getPrice()+" BYN" + " - "+deal.getProduct(i).getQuantity()+" ед.");
 //			}
 				  
-							
+					
 		deal.deal();
 		deal.check();
+		
 		
 		sc.close();	
 	}	 	
