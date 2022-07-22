@@ -75,14 +75,14 @@ public class Deal {
 	}
 	
 	public void removeProduct(Product product) {
-		System.out.println(index);
+//		System.out.println(index);
 		for(int i=products.length-1; i>=0; i--) {
 			if (products[i]!=null) {
 				index=i+1;
 				break;
 			}
 		}
-		System.out.println(index);		
+//		System.out.println(index);		
 		if(index<0 || index>=products.length) {
 			System.out.println("Данного товара нет в корзине товаров. Удаление не возможно");
 			return;
