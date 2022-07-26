@@ -22,8 +22,8 @@ public class Body {
 	public class Heart {
 
 		public void live() {
-			for(int i=0; i<=Integer.MAX_VALUE; i++) {
-				if ((i+1)%1000000000==0 ) {
+			for(int i=0; i<Integer.MAX_VALUE; i++) {
+				if ((i+1)%100_000_000==0 ) {
 					System.out.println("Knock-knock-knockin' on heaven's door.");
 					System.out.println(i+1);
 				}
@@ -34,13 +34,13 @@ public class Body {
 	public class Lungs {
 
 		public void live() {
-			for(int i=0; i<=Integer.MAX_VALUE; i++) {
-				if ((i+1)%500000000==0 ) {
+			for(int i=0; i<Integer.MAX_VALUE; i++) {
+				if ((i+1)%50_000_000==0 ) {
 					System.out.println("Breathe in");
 					System.out.println(i+1);	
 					System.out.println(Integer.MAX_VALUE);
 				}
-				if ((i+1)%1000000000==0 ) {
+				if ((i+1)%100_000_000==0 ) {
 					System.out.println("Breathe out");
 					System.out.println(i+1);						
 				}							
@@ -50,16 +50,16 @@ public class Body {
 	
 	public Body () {
 		super ();
-		this.heart = new Heart();
-		this.lungs = new Lungs();
+		Heart heart= new Heart();
+		this.heart=heart;
+		Lungs lungs = new Lungs();
+		this.lungs=lungs;
+		
 	}
 	public void live(){
-//		Body.Lungs lungs=this.new Lungs();
-//		Body.Heart heart=this.new Heart();
-//		Lungs lungs=new Body().new Lungs();
-//		Heart heart=new Body().new Heart();		
-		this.heart.live();
-		this.lungs.live();		
+
+		heart.live();
+		lungs.live();		
 	}
 }
 
