@@ -22,7 +22,8 @@ public class Calculator {
 		return subtraction; 
 	}
 	public static void main(String[] args) {
-//		Calculator calculator=new Calculator();
+//		Calculator calculator=new Calculator(); так как методы static не создаем объекты класса,
+//		обращаемся сразу к классу
 		System.out.println(Calculator.sum(2.55, 2));
 		System.out.println(Calculator.multiply(2.55, 2));
 		System.out.println(Calculator.divide(2.55, 2));
