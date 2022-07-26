@@ -1,7 +1,7 @@
 package by.academy.deal;
 
 import java.util.Objects;
-
+@Producer(country="New Zeland", founderFullName="NewZelander", startYear=1600)
 public class Wine extends Product {
 	
 	private int age;
