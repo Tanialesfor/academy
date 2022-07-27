@@ -23,7 +23,7 @@ public class Body {
 
 		public void live() {
 			for(int i=0; i<Integer.MAX_VALUE; i++) {
-				if ((i+1)%100_000_000==0 ) {
+				if ((i+1)%100==0 ) {
 					System.out.println("Knock-knock-knockin' on heaven's door.");
 					System.out.println(i+1);
 				}
@@ -35,12 +35,12 @@ public class Body {
 
 		public void live() {
 			for(int i=0; i<Integer.MAX_VALUE; i++) {
-				if ((i+1)%50_000_000==0 ) {
+				if ((i+1)%50==0 ) {
 					System.out.println("Breathe in");
 					System.out.println(i+1);	
 					System.out.println(Integer.MAX_VALUE);
 				}
-				if ((i+1)%100_000_000==0 ) {
+				if ((i+1)%10==0 ) {
 					System.out.println("Breathe out");
 					System.out.println(i+1);						
 				}							
@@ -57,9 +57,24 @@ public class Body {
 		
 	}
 	public void live(){
-
 		heart.live();
 		lungs.live();		
 	}
+	@Override
+	public int hashCode() {
+		// TODO Auto-generated method stub
+		return super.hashCode();
+	}
+	@Override
+	public boolean equals(Object obj) {
+		// TODO Auto-generated method stub
+		return super.equals(obj);
+	}
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return super.toString();
+	}
+	
 }
 

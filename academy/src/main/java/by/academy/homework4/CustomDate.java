@@ -21,10 +21,20 @@ public class CustomDate implements  Validator{
 	public Year year;
 	public Month month;
 	public Day day;
+	
 //	private int daysNumber;
-//	LocalDate data=LocalDate.now();
+
 	
-	
+	public enum DaysofWeek {
+		MONDAY ("Понедельник", 1), TUESDAY("Вторник",2), WEDNESDAY("Среда",3), THURSDAY("Четверг",4), FRIDAY("Пятница",5), SATURDAY("Суббота",6), SUNDAY("Воскресенье",7);
+		String name;
+		int daysNumber;
+		
+		 DaysofWeek (String name, int daysNumber){
+			this.name=name;
+			this.daysNumber=daysNumber;
+		}
+	}
 	
 	 
 //	public CustomDate(int daysNumber) {
