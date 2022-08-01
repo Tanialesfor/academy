@@ -4,6 +4,8 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 import java.time.DayOfWeek;
+import java.util.Scanner;
+
 
 import by.academy.deal.Validator;
 //Задание 1.
@@ -21,20 +23,30 @@ public class CustomDate implements  Validator{
 	public Year year;
 	public Month month;
 	public Day day;
+	static DaysofWeek dayOfWeek;			
+	
+	public String toString() {
+		return this.year.x+"/"+this.month.x+"/"+this.day.x;
+	}
 	
 //	private int daysNumber;
 
 	
-	public enum DaysofWeek {
-		MONDAY ("Понедельник", 1), TUESDAY("Вторник",2), WEDNESDAY("Среда",3), THURSDAY("Четверг",4), FRIDAY("Пятница",5), SATURDAY("Суббота",6), SUNDAY("Воскресенье",7);
-		String name;
-		int daysNumber;
-		
-		 DaysofWeek (String name, int daysNumber){
-			this.name=name;
-			this.daysNumber=daysNumber;
-		}
-	}
+	
+//	public enum DaysofWeek {
+//		MONDAY ("Понедельник", 1), TUESDAY("Вторник",2), WEDNESDAY("Среда",3), THURSDAY("Четверг",4), FRIDAY("Пятница",5), SATURDAY("Суббота",6), SUNDAY("Воскресенье",7);
+//		String name;
+//		int daysNumber;
+//		
+//		 DaysofWeek (String name, int daysNumber){
+//			this.name=name;
+//			this.daysNumber=daysNumber;
+//		}
+//		 
+//		 
+//	}
+	
+	
 	
 	 
 //	public CustomDate(int daysNumber) {
@@ -69,10 +81,13 @@ public class CustomDate implements  Validator{
 //		DayOfWeek dayWeekEnum = data.getDayOfWeek();
 //			
 //	}
-	public void print(LocalDate data) {
-			
-		
-		System.out.println("День недели: "+data.getDayOfWeek());
+	
+	public LocalDate toLocalDate() {
+		return LocalDate.of(this.year.x,this.month.x,this.day.x);
+	} 
+	
+	public void printDayOfWeek() {					
+		System.out.println("День недели(номер): "+this.toLocalDate().getDayOfWeek().getValue());
 	}
 	
 	@Override
@@ -86,27 +101,127 @@ public class CustomDate implements  Validator{
 		public Year(int year) {
 			this.x=year;
 		}
+		
+		public boolean isleapYear() {
+			if (x%4==0) {
+				return true;
+			} else return false;
+		}
 	}
 	public class Month{
 		int x;
 		String name;
+		int daysMonth;
+		Year year; 
+		
 		public Month(int month) {
 			this.x=month;
 		}
+		
+		public int getDays(int monthNumber, Year monthYear) {
+            switch (monthNumber) {
+ 
+                case 1:
+                	daysMonth = 31;
+                    break;
+                case 2:
+                	if (monthYear.isleapYear()==true)
+                		daysMonth = 29;
+                	else 
+                		daysMonth = 28;
+                    break;
+                case 3:
+                	daysMonth = 31;
+                    break;
+                case 4:
+                	daysMonth = 30;
+                    break;
+                case 5:
+                	daysMonth = 31;
+                    break;
+                case 6:
+                	daysMonth = 30;
+                    break;
+                case 7:
+                	daysMonth = 31;
+                    break;
+                case 8:
+                	daysMonth = 31;
+                    break;
+                case 9:
+                	daysMonth = 30;
+                    break;
+                case 10:
+                	daysMonth = 31;
+                    break;
+                case 11:
+                	daysMonth = 30;
+                    break;
+                case 12:
+                	daysMonth = 31;
+                    break;
+                default:
+                    System.out.println("Номер месяца введен не верно.");
+                    break;
+            }
+            return daysMonth;
+        }		
 	}
 	public class Day{
 		int x;
 		String name;
-		String dateOfWeek; 
+		int dayOfWeek; 
 		public Day(int day) {
 			this.x=day;
 		}
+	}		
+	
+	public enum DaysofWeek {
+		MONDAY ("Понедельник", 1), TUESDAY("Вторник",2), WEDNESDAY("Среда",3), THURSDAY("Четверг",4), FRIDAY("Пятница",5), SATURDAY("Суббота",6), SUNDAY("Воскресенье",7);
+		String name;
+		int daysNumber;
+					
+		DaysofWeek (String name, int daysNumber){
+			this.name=name;
+			this.daysNumber=daysNumber;			
+		}				 
+	}	
+	
+	public void setDayOfWeek() {
+		switch (this.toLocalDate().getDayOfWeek().toString()) {
+		case "MONDAY" :
+			dayOfWeek=DaysofWeek.MONDAY;
+			break;			
+		case "TUESDAY" :
+			dayOfWeek=DaysofWeek.TUESDAY;
+			break;				
+		case "WEDNESDAY" :
+			dayOfWeek=DaysofWeek.WEDNESDAY;
+			break;			
+		case "THURSDAY" :
+			dayOfWeek=DaysofWeek.THURSDAY;
+			break;			
+		case "FRIDAY" :
+			dayOfWeek=DaysofWeek.FRIDAY;
+			break;			
+		case "SATURDAY" :
+			dayOfWeek=DaysofWeek.SATURDAY;
+			break;			
+		case "SUNDAY" :
+			dayOfWeek=DaysofWeek.SUNDAY;
+			break;			
+		}	
+	}
+	
+	public void printCustomDayOfWeek() {
+		System.out.println("День недели: "+this.dayOfWeek.name);		
 	}
 	
 	public CustomDate(int year, int month, int day ) {
 		this.year = this.new Year(year);	
 		this.month = this.new Month(month);
 		this.day = this.new Day(day);
+		this.setDayOfWeek();
 	}	
 	
 	public CustomDate(String str) {
