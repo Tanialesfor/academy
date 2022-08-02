@@ -63,14 +63,14 @@ public class LinkedListCustom <T>{
 			 return;
 		 }
 					
-		if (index>=0 && index<size) {
+//		if (index>=0 && index<size) {
 //			Node node=getNode(index);
 //			Node prev=node.prev;
 //			Node next=node.next;
-		 if (index==0) {
+//		 if (index==0) {
 //			 head=next;
-		 }
-		} 
+//		 }
+//		} 
 		 
 	 }
 	 
