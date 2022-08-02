@@ -1,4 +1,4 @@
-package by.academy.lesson15;
+package by.academy.lesson15.linkedList;
 
 import java.util.LinkedList;
 

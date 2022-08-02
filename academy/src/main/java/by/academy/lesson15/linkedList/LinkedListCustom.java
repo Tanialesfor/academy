@@ -1,8 +1,8 @@
-package by.academy.lesson15;
+package by.academy.lesson15.linkedList;
 
 import java.util.LinkedList;
 
-public class LinkidListCustom <T>{
+public class LinkedListCustom <T>{
 	private Node head;
 	 private Node tail;
 	 private int size = 0;
@@ -49,16 +49,29 @@ public class LinkidListCustom <T>{
 	 }
 
 	 public void remove(int index) {
-		 Node current=head;
-		 int counter=0;
-		 if (size < index || index < 0) {
-			 System.out.println("Ошибка");
-			  
+		if (size==1 && index==0) {
+			head=null;
+			tail=null;
+			size=0;
+			return;
+		}
+		 if (index==size-1) {
+			 Node prev=tail.prev;
+			 prev.next=null;
+			 tail=prev;
+			 size--;
+			 return;
 		 }
-		 Node next=current.next;
-		 Node prev=current.prev;
-		 prev.next=next;
-		 next.prev=prev;
+					
+		if (index>=0 && index<size) {
+//			Node node=getNode(index);
+//			Node prev=node.prev;
+//			Node next=node.next;
+		 if (index==0) {
+//			 head=next;
+		 }
+		} 
+		 
 	 }
 	 
 	 
