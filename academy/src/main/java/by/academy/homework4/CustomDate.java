@@ -1,13 +1,11 @@
 package by.academy.homework4;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 import java.time.DayOfWeek;
-import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-
-import by.academy.deal.Validator;
 //Задание 1.
 //Создать класс CustomDate, используя вложенные классы Год, Месяц, День. 
 //Методы: задать дату, вывести на консоль день недели по заданной дате. 
@@ -25,63 +23,41 @@ public class CustomDate implements  Validator{
 	public Day day;
 	static DaysofWeek dayOfWeek;			
 	
-	public String toString() {
-		return this.year.x+"/"+this.month.x+"/"+this.day.x;
-	}
-	
-//	private int daysNumber;
-
-	
-	
-//	public enum DaysofWeek {
-//		MONDAY ("Понедельник", 1), TUESDAY("Вторник",2), WEDNESDAY("Среда",3), THURSDAY("Четверг",4), FRIDAY("Пятница",5), SATURDAY("Суббота",6), SUNDAY("Воскресенье",7);
-//		String name;
-//		int daysNumber;
-//		
-//		 DaysofWeek (String name, int daysNumber){
-//			this.name=name;
-//			this.daysNumber=daysNumber;
-//		}
-//		 
-//		 
-//	}
-	
-	
-	
-	 
-//	public CustomDate(int daysNumber) {
-//		this.daysNumber=daysNumber;
-//	}
-	
-//	public static CustomDate MONDAY=new CustomDate(1);
-//	public static CustomDate TUESDAY=new CustomDate(2);
-//	public static CustomDate WEDNESDAY=new CustomDate(3);
-//	public static CustomDate THURSDAY=new CustomDate(4);
-//	public static CustomDate FRIDAY =new CustomDate(5);
-//	public static CustomDate SATURDAY =new CustomDate(6);
-//	public static CustomDate SUNDAY =new CustomDate(7);
-	
-	
-	
-	
-//	
-//	public LocalDate getData() {
-//		return data;
-//	}
-//
-//	public void setData(LocalDate data) {
-//		this.data = data;
-//	}
 
 	public CustomDate() {
 		super();
 	}
-//	public setDate(int year, int month, int day ) {
-//		LocalDate data=LocalDate.of(year, month, day);
-//		DayOfWeek dayWeekEnum = data.getDayOfWeek();
-//			
-//	}
-	
+
+	@Override
+	public String toString() {
+		return this.year.x+"/"+this.month.x+"/"+this.day.x;
+	}
+
+
+	public Year getYear() {
+		return year;
+	}
+
+	public void setYear(Year year) {
+		this.year = year;
+	}
+
+	public Month getMonth() {
+		return month;
+	}
+
+	public void setMonth(Month month) {
+		this.month = month;
+	}
+
+	public Day getDay() {
+		return day;
+	}
+
+	public void setDay(Day day) {
+		this.day = day;
+	}
+
 	public LocalDate toLocalDate() {
 		return LocalDate.of(this.year.x,this.month.x,this.day.x);
 	} 
@@ -90,12 +66,7 @@ public class CustomDate implements  Validator{
 		System.out.println("День недели(номер): "+this.toLocalDate().getDayOfWeek().getValue());
 	}
 	
-	@Override
-	public boolean isValid(String string) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
+	
 	public class Year{
 		int x;
 		public Year(int year) {
@@ -224,13 +195,33 @@ public class CustomDate implements  Validator{
 		this.setDayOfWeek();
 	}	
 	
-	public CustomDate(String str) {
-		super();		
+	
+	@Override
+		public boolean isValid(String strData) {
+			Pattern pattern = Pattern.compile("\\d{2}\\-\\d{2}\\-\\d{4}");
+			Matcher matcher = pattern.matcher(strData);	
+			if(matcher.find()) {
+				return true;
+				}
+			return false;
+		}
+	public CustomDate(String strData) {
+		
+	}
+		
+		public void isCustomDateValid (String strData) {
+		Validator valid=new CustomDate(strData);
+		if (valid.isValid(strData)) {
+			System.out.println("Введенная строка является датой.");
+			
+		} else {
+			System.out.println("Введенная строка не является датой.");
+			
+		}
+	}
+		
+		
 	}
 
-//	DateTimeFormatter formatterDTa=DateTimeFormatter.ofPattern("dd/MM/yyyy", Locale.US);
-//	LocalDate lda=LocalDate.parse(data, formatterDTa);	
-//	System.out.println("День: "+lda.getDayOfMonth());
-//	
 
-}
+
