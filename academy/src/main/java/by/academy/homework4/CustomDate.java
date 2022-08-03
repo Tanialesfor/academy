@@ -2,6 +2,7 @@ package by.academy.homework4;
 
 import java.time.LocalDate;
 import java.util.Locale;
+import java.util.Objects;
 import java.time.DayOfWeek;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -21,43 +22,18 @@ public class CustomDate implements  Validator{
 	public Year year;
 	public Month month;
 	public Day day;
-	static DaysofWeek dayOfWeek;			
+	static DaysofWeek dayOfWeek;
+	private final static Pattern pattern = Pattern.compile("\\d{2}\\-\\d{2}\\-\\d{4}");
 	
 
 	public CustomDate() {
 		super();
 	}
 
-	@Override
-	public String toString() {
-		return this.year.x+"/"+this.month.x+"/"+this.day.x;
+	public CustomDate(String strData) {
+		
 	}
-
-
-	public Year getYear() {
-		return year;
-	}
-
-	public void setYear(Year year) {
-		this.year = year;
-	}
-
-	public Month getMonth() {
-		return month;
-	}
-
-	public void setMonth(Month month) {
-		this.month = month;
-	}
-
-	public Day getDay() {
-		return day;
-	}
-
-	public void setDay(Day day) {
-		this.day = day;
-	}
-
+	
 	public LocalDate toLocalDate() {
 		return LocalDate.of(this.year.x,this.month.x,this.day.x);
 	} 
@@ -196,18 +172,17 @@ public class CustomDate implements  Validator{
 	}	
 	
 	
+//	@Override
+//		public boolean isValid(String strData) {
+//				return pattern.matcher(strData).matches();
+//				}
+			
 	@Override
-		public boolean isValid(String strData) {
-			Pattern pattern = Pattern.compile("\\d{2}\\-\\d{2}\\-\\d{4}");
-			Matcher matcher = pattern.matcher(strData);	
-			if(matcher.find()) {
-				return true;
-				}
-			return false;
-		}
-	public CustomDate(String strData) {
-		
+	public Pattern getPattern() {
+		return pattern;
 	}
+
+	
 		
 		public void isCustomDateValid (String strData) {
 		Validator valid=new CustomDate(strData);
@@ -219,6 +194,53 @@ public class CustomDate implements  Validator{
 			
 		}
 	}
+
+		public Year getYear() {
+			return year;
+		}
+
+		public void setYear(Year year) {
+			this.year = year;
+		}
+
+		public Month getMonth() {
+			return month;
+		}
+
+		public void setMonth(Month month) {
+			this.month = month;
+		}
+
+		public Day getDay() {
+			return day;
+		}
+
+		public void setDay(Day day) {
+			this.day = day;
+		}
+
+		@Override
+		public String toString() {
+			return this.year.x+"/"+this.month.x+"/"+this.day.x;
+		}
+		
+		@Override
+		public int hashCode() {
+			return Objects.hash(day, month, year);
+		}
+
+		@Override
+		public boolean equals(Object obj) {
+			if (this == obj)
+				return true;
+			if (obj == null)
+				return false;
+			if (getClass() != obj.getClass())
+				return false;
+			CustomDate other = (CustomDate) obj;
+			return Objects.equals(day, other.day) && Objects.equals(month, other.month)
+					&& Objects.equals(year, other.year);
+		}
 		
 		
 	}

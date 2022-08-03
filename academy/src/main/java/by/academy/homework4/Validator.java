@@ -1,6 +1,12 @@
 package by.academy.homework4;
 
+import java.util.regex.Pattern;
+
 public interface Validator {
 
-	boolean isValid(String strData);
+	default boolean isValid(String strData) {
+		return getPattern().matcher(strData).matches();
+	}
+	Pattern getPattern();
 }
+
