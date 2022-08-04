@@ -1,5 +1,6 @@
 package by.academy.lesson16;
 
+
 public class HeavyBox  implements Comparable<HeavyBox>{
 	private int weight;
 	 private int width;
