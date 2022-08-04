@@ -23,6 +23,7 @@ public class CustomDate implements  Validator{
 	public Month month;
 	public Day day;
 	static DaysofWeek dayOfWeek;
+	private String strData;
 	private final static Pattern pattern = Pattern.compile("\\d{2}\\-\\d{2}\\-\\d{4}");
 	
 
@@ -31,38 +32,42 @@ public class CustomDate implements  Validator{
 	}
 
 	public CustomDate(String strData) {
-		
+		this.strData=strData;
+		this.year=new Year(Integer.parseInt(strData.substring(6)));
+		this.month=new Month(Integer.parseInt(strData.substring(3,5)));
+		this.day=new Day(Integer.parseInt(strData.substring(0,2)));
 	}
 	
 	public LocalDate toLocalDate() {
-		return LocalDate.of(this.year.x,this.month.x,this.day.x);
+		return LocalDate.of(this.year.value,this.month.value,this.day.value);
 	} 
 	
 	public void printDayOfWeek() {					
-		System.out.println("День недели(номер): "+this.toLocalDate().getDayOfWeek().getValue());
+		System.out.println("День недели по заданной дате (номер): "+this.toLocalDate().getDayOfWeek().getValue());
 	}
 	
 	
 	public class Year{
-		int x;
+		int value;
 		public Year(int year) {
-			this.x=year;
+			this.value=year;
 		}
 		
 		public boolean isleapYear() {
-			if (x%4==0) {
+			if (value%4==0) {
 				return true;
 			} else return false;
 		}
 	}
+	
 	public class Month{
-		int x;
+		int value;
 		String name;
 		int daysMonth;
 		Year year; 
 		
 		public Month(int month) {
-			this.x=month;
+			this.value=month;
 		}
 		
 		public int getDays(int monthNumber, Year monthYear) {
@@ -108,18 +113,18 @@ public class CustomDate implements  Validator{
                 	daysMonth = 31;
                     break;
                 default:
-                    System.out.println("Номер месяца введен не верно.");
+                    System.out.println("Месяц введен не верно.");
                     break;
             }
             return daysMonth;
         }		
 	}
 	public class Day{
-		int x;
+		int value;
 		String name;
 		int dayOfWeek; 
 		public Day(int day) {
-			this.x=day;
+			this.value=day;
 		}
 	}		
 	
@@ -134,7 +139,7 @@ public class CustomDate implements  Validator{
 		}				 
 	}	
 	
-	public void setDayOfWeek() {
+	public void enumDayOfWeek() {
 		switch (this.toLocalDate().getDayOfWeek().toString()) {
 		case "MONDAY" :
 			dayOfWeek=DaysofWeek.MONDAY;
@@ -161,40 +166,22 @@ public class CustomDate implements  Validator{
 	}
 	
 	public void printCustomDayOfWeek() {
-		System.out.println("День недели: "+this.dayOfWeek.name);		
+		System.out.println("День недели в виде перечисления: "+this.dayOfWeek.name);		
 	}
 	
 	public CustomDate(int year, int month, int day ) {
 		this.year = this.new Year(year);	
 		this.month = this.new Month(month);
 		this.day = this.new Day(day);
-		this.setDayOfWeek();
+		this.enumDayOfWeek();
 	}	
-	
-	
-//	@Override
-//		public boolean isValid(String strData) {
-//				return pattern.matcher(strData).matches();
-//				}
-			
+				
 	@Override
 	public Pattern getPattern() {
 		return pattern;
 	}
 
 	
-		
-		public void isCustomDateValid (String strData) {
-		Validator valid=new CustomDate(strData);
-		if (valid.isValid(strData)) {
-			System.out.println("Введенная строка является датой.");
-			
-		} else {
-			System.out.println("Введенная строка не является датой.");
-			
-		}
-	}
-
 		public Year getYear() {
 			return year;
 		}
@@ -221,7 +208,7 @@ public class CustomDate implements  Validator{
 
 		@Override
 		public String toString() {
-			return this.year.x+"/"+this.month.x+"/"+this.day.x;
+			return this.day.value+"-"+this.month.value+"-"+this.year.value;
 		}
 		
 		@Override
