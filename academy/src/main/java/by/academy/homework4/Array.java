@@ -44,7 +44,7 @@ public class Array<T> {
 		array=newArray;
 	}
 	
-	public void addArray(T obj) {
+	public void add(T obj) {
 		if(index==array.length) {
 			grow();
 		}
@@ -86,7 +86,7 @@ public class Array<T> {
 		return last;
 	}
 	
-	public void removeArray(int index) {
+	public void remove(int index) {
 		for(int i=array.length-1; i>=0; i--) {
 			if (array[i]!=null) {
 				index=i+1;
@@ -106,10 +106,20 @@ public class Array<T> {
 			}
 		}
 	}
-	
-	
-	
-	
+	public void remove(T obj) {
+		for (int i=0; i<array.length;i++) {
+			if (array[i]==obj) {
+				System.arraycopy(array, i+1, array, i, array.length-i-1);
+				array[i]=null;
+				index=index-1;
+				break;
+			}
+			else {
+				System.out.println("Объект obj отсутствует в массиве array");
+			}
+		}
+	}	
+		
 	@Override
 	public int hashCode() {
 		final int prime = 31;

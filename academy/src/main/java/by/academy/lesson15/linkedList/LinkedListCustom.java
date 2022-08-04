@@ -55,27 +55,26 @@ public class LinkedListCustom <T>{
 			size=0;
 			return;
 		}
-		 if (index==size-1) {
+		if (index>=0 && index<size) {
+			Node node=getNode(index);
+			Node prev=node.prev;
+			Node next=node.next;
+		 if (index==0) {
+			 head=next;
+		 }
+		} 
+			
+		if (index==size-1) {
 			 Node prev=tail.prev;
 			 prev.next=null;
 			 tail=prev;
 			 size--;
 			 return;
 		 }
-					
-//		if (index>=0 && index<size) {
-//			Node node=getNode(index);
-//			Node prev=node.prev;
-//			Node next=node.next;
-//		 if (index==0) {
-//			 head=next;
-//		 }
-//		} 
-		 
-	 }
+		 System.out.println("Index of bound");
+	    }
 	 
-	 
-	 
+			
 	 public T get(int index) {
 
 	  Node current = head;
@@ -97,6 +96,19 @@ public class LinkedListCustom <T>{
 	  }
 	 }
 
+	 private Node getNode (int index) {
+		 int counter=0;
+		 Node node=head;
+		 while (node!=null) {
+			 if (counter==index) {
+				 break;
+			}
+			 node=node.next;
+			 counter++;
+		}
+		 return node;
+	 }
+	 
 	 class Node {
 
 	  T value;
