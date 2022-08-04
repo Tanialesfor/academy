@@ -14,37 +14,34 @@ import java.util.Map.Entry;
 
 public class ToyDemo {
 	public static void main(String[] args) {
-		Map<String, Toy> map1 = new HashMap<>();
+		Map<String, Toy> map = new HashMap<>();
 
-		Toy t1 = new Toy();
-		Toy t2 = new Toy();
-		Toy t3 = new Toy();
+		map.put("Кукла", new Toy("Маша", "белый", 0.25));
+		map.put("Машинка", new Toy("Грузовик", "синий", 0.45));
+		map.put("Мячик", new Toy("Футбольный", "белый", 0.30));
 
-		map1.put("a", t1);
-		map1.put("b", t2);
-		map1.put("c", t3);
-
-		printKey(map1);
-		printValue(map1);
-		printValueAndKey(map1);
+		System.out.println(map);
+		printKey(map);
+		printValue(map);
+		printValueAndKey(map);
+			
 	}
 
-	public static void printKey(Map<String, Toy> map1) {
-		for (String key : map1.keySet()) {
+	public static void printKey(Map<String, Toy> map) {
+		for (String key : map.keySet()) {
 			System.out.println(key);
 		}
 	}
 
-	public static void printValue(Map<String, Toy> map1) {
-		for (Toy value : map1.values()) {
+	public static void printValue(Map<String, Toy> map) {
+		for (Toy value : map.values()) {
 			System.out.println(value);
 		}
 	}
-
-	List<Integer> list = List.of( 3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5, 9 );
-
-	public static void printValueAndKey(Map<String, Toy> map1) {
-		for (Entry<String, Toy> entry : map1.entrySet()) {
+	
+	
+	public static void printValueAndKey(Map<String, Toy> map) {
+		for (Entry<String, Toy> entry : map.entrySet()) {
 			System.out.println(entry.getKey() + " " + entry.getValue());
 		}
 	}
