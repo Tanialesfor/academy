@@ -8,6 +8,7 @@ public class LocalDateDemo2 {
 	public static void main(String[] args) {
 		LocalDate today = LocalDate.now();
 
+//		System.out.println(today);
 		int year = today.getYear();
 		int month = today.getMonthValue();
 		Month monthAsEnum = today.getMonth(); // как перечисление
