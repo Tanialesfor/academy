@@ -24,7 +24,6 @@ import by.academy.deal.Product;
 
 public class Array<T> {
 	private T[] array;
-	private int size;
 	private int index=0;
 
 	public Array () {
@@ -33,7 +32,6 @@ public class Array<T> {
 	}
 	
 	public Array(int size) {
-		this.size = size;
 		this.array=(T []) new Object[size]; 
 	}
 	
@@ -48,28 +46,23 @@ public class Array<T> {
 		if(index==array.length) {
 			grow();
 		}
-		array[index]=obj;
-		index++;
+		array[index++]=obj;
 	}
 		
-	
-	public void getElementofIndex (int index) {
-		for (int i = 0; i < array.length; i++) {
-			if (index == i) {
-				if (index >= array.length || index < 0) {
+	public void getElementofIndex (int i) {
+		if (i >= this.index || i < 0) {
 			System.out.println("Элемента с таким индексом не существует."); 
-				}
-				System.out.println(Arrays.toString((T[]) array[i]));
-			}
+		} else {
+			System.out.println(array[i]);
 		}
 	}
 	
 	public T getLast() {
-		 		return  (T) array[array.length-1];
-   } 
+		return (T) array[index-1];
+    } 
 	
 	public T getFirst() {
- 		return  (T) array[0];
+ 		return (T) array[0];
 	}
 	
 	public int getSize() {
@@ -77,55 +70,34 @@ public class Array<T> {
 	}
 	
 	public int getLastElement() {
-		int last = 0;
-		for (int i = 0; i < array.length; i++) {
-			if (array[i] == null) {
-				last = i - 1;
-			}
-		}
-		return last;
+		return index-1;
 	}
 	
-	public void remove(int index) {
-		for(int i=array.length-1; i>=0; i--) {
-			if (array[i]!=null) {
-				index=i+1;
-				break;
-			}
-		}
-		if(index<0 || index>=array.length) {
+	public void remove(int i) {
+		if(i<0 || i>=this.index) {
 			System.out.println("Удаление не возможно");
 			return;
 		}		
-		for (int i=0; i<array.length;i++) {
-			if (index==i) {
-				System.arraycopy(array, i+1, array, i, array.length-i-1);
-				array[index-1]=null;
-				index=index-1;
-				break;
-			}
-		}
+		System.arraycopy(array, i+1, array, i, array.length-i-1);
+		array[index--]=null;
 	}
-	public void remove(T obj) {
-		for (int i=0; i<array.length;i++) {
+	public void removeObj(T obj) {
+		for (int i=0; i<this.index;i++) {
 			if (array[i]==obj) {
 				System.arraycopy(array, i+1, array, i, array.length-i-1);
-				array[i]=null;
-				index=index-1;
-				break;
-			}
-			else {
-				System.out.println("Объект obj отсутствует в массиве array");
+				array[index--]=null;
+				return;
 			}
 		}
-	}	
-		
+		System.out.println("Объект obj отсутствует в массиве array");		
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + Arrays.deepHashCode(array);
-		result = prime * result + Objects.hash(size);
+		result = prime * result + Objects.hash(index);
 		return result;
 	}
 
@@ -138,16 +110,11 @@ public class Array<T> {
 		if (getClass() != obj.getClass())
 			return false;
 		Array other = (Array) obj;
-		return Arrays.deepEquals(array, other.array) && size == other.size;
+		return Arrays.deepEquals(array, other.array) && index == other.index;
 	}
 
 	@Override
 	public String toString() {
-		return "Array [array=" + Arrays.toString(array) + ", size=" + size + "]";
-	}    
-	
-	
-	
-	
-    
+		return "Array [array=" + Arrays.toString(array) + "]";
+	}			  	
 }

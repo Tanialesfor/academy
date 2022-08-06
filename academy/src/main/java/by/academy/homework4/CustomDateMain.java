@@ -1,7 +1,5 @@
 package by.academy.homework4;
 
-import java.time.temporal.ChronoField;
-
 import java.time.LocalDate;
 import java.util.Scanner;
 
@@ -56,16 +54,18 @@ public class CustomDateMain {
 		    }
 		   	   		
 		CustomDate date1=new CustomDate(year,month,day);
-		LocalDate data2=LocalDate.now();
+		
 //		System.out.println("Полученная дата согласно вводимым значениям: "+date1.toString());
 //		System.out.println(date1.month.getDays(date1.month.value, date1.year));
 		date1.printDayOfWeek();
 		date1.printCustomDayOfWeek();
 		
-//		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-//		LocalDate startDate = LocalDate.parse(date1, formatter);
-//		LocalDate endDate = LocalDate.parse(null, null);
-//		int days = (int) ChronoUnit.DAYS.between(date1, date2);
+		LocalDate date2=LocalDate.now();
+		LocalDate endDate = date1.toLocalDate();
+		LocalDate startDate = LocalDate.of(date2.getYear(),date2.getMonth(),date2.getDayOfMonth());
+		int period=(int)Math.abs((endDate.toEpochDay())-startDate.toEpochDay());
+		System.out.println("Количество дней в промежутке между date1 и date2: "+period);
+		
 		
 			System.out.println("Введите дату:");
 			
@@ -90,10 +90,4 @@ public class CustomDateMain {
 			while (skip=true);
 			sc.close();	
 	}
-
-//	private static Object skip(boolean b) {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
-	
 }
