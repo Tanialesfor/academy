@@ -20,14 +20,26 @@ public class MyIterator {
  
             @Override
             public String next() {
-                return String.valueOf(array[i+1]);
+            	if (array.length > i) {
+            		return String.valueOf(array[i++]);
+            	} else {
+            		return "Следующий элемент отсутствует";
+            	}
             }
             
         };
  
         System.out.println(iterator.hasNext());
         System.out.println(iterator.next());
-        System.out.println(iterator.hashCode());
+       
+        System.out.println(iterator.hasNext());
+        System.out.println(iterator.next());
+        System.out.println(iterator.hasNext());
+        System.out.println(iterator.next());
+        System.out.println(iterator.hasNext());
+        System.out.println(iterator.next());
+        System.out.println(iterator.hasNext());
+        System.out.println(iterator.next());
     }
 	
 }
