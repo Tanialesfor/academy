@@ -29,17 +29,13 @@ public class MyIterator {
             
         };
  
-        System.out.println(iterator.hasNext());
-        System.out.println(iterator.next());
-       
-        System.out.println(iterator.hasNext());
-        System.out.println(iterator.next());
-        System.out.println(iterator.hasNext());
-        System.out.println(iterator.next());
-        System.out.println(iterator.hasNext());
-        System.out.println(iterator.next());
-        System.out.println(iterator.hasNext());
-        System.out.println(iterator.next());
+        while (iterator.hasNext()) {
+        	System.out.println(iterator.next());
+        }
+        
+        if (iterator.hasNext()==false) {
+        	System.out.println(iterator.next());
+        }    
     }
 	
 }

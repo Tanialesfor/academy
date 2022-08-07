@@ -54,9 +54,8 @@ public class CustomDateMain {
 		    }
 		   	   		
 		CustomDate date1=new CustomDate(year,month,day);
+		System.out.println("Год "+date1.year.value+" является высокосным: " + date1.year.isleapYearCustomDate());
 		
-//		System.out.println("Полученная дата согласно вводимым значениям: "+date1.toString());
-//		System.out.println(date1.month.getDays(date1.month.value, date1.year));
 		date1.printDayOfWeek();
 		date1.printCustomDayOfWeek();
 		
@@ -64,30 +63,29 @@ public class CustomDateMain {
 		LocalDate endDate = date1.toLocalDate();
 		LocalDate startDate = LocalDate.of(date2.getYear(),date2.getMonth(),date2.getDayOfMonth());
 		int period=(int)Math.abs((endDate.toEpochDay())-startDate.toEpochDay());
-		System.out.println("Количество дней в промежутке между date1 и date2: "+period);
+		System.out.println("Количество дней в промежутке между date1 и date2: "+period);	
 		
+		System.out.println("Введите дату:");
 		
-			System.out.println("Введите дату:");
-			
-			do{
-				skip=false;	
-				CustomDate data=new CustomDate();
-				String strData=sc.next();
-			
-			if(data.isValid(strData)==false) {
+		do{
+			skip=false;	
+			CustomDate date=new CustomDate();
+			String strDate=sc.next();
+		
+			if(date.isValid(strDate)==false) {
 				System.out.println("Дата введена не верно. Повторите ввод");
 				skip=true;
 				continue;
 			}
 			else{				
-			    CustomDate data3=new CustomDate(strData);
-				System.out.println("Год: "+data3.getYear().value);
-				System.out.println("Месяц: "+data3.getMonth().value);
-				System.out.println("День месяца: "+data3.getDay().value);	
+			    CustomDate date3=new CustomDate(strDate);
+				System.out.println("Год: "+date3.getYear().value);
+				System.out.println("Месяц: "+date3.getMonth().value);
+				System.out.println("День месяца: "+date3.getDay().value);	
 			}
 			
-			}
-			while (skip=true);
-			sc.close();	
+		} while (skip=true);		
+				
+		sc.close();	
 	}
 }

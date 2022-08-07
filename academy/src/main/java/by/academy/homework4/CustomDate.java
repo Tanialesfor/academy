@@ -23,16 +23,21 @@ public class CustomDate implements  Validator{
 	public Month month;
 	public Day day;
 	static DaysofWeek dayOfWeek;
-	private String strData;
 	private final static Pattern pattern = Pattern.compile("\\d{2}\\-\\d{2}\\-\\d{4}");
 	
 
 	public CustomDate() {
 		super();
 	}
-
+	
+	public CustomDate(int year, int month, int day ) {
+		this.year = this.new Year(year);	
+		this.month = this.new Month(month);
+		this.day = this.new Day(day);
+		this.enumDayOfWeek();
+	}	
+	
 	public CustomDate(String strData) {
-		this.strData=strData;
 		this.year=new Year(Integer.parseInt(strData.substring(6)));
 		this.month=new Month(Integer.parseInt(strData.substring(3,5)));
 		this.day=new Day(Integer.parseInt(strData.substring(0,2)));
@@ -53,7 +58,7 @@ public class CustomDate implements  Validator{
 			this.value=year;
 		}
 		
-		public boolean isleapYear() {
+		public boolean isleapYearCustomDate() {
 			if (value%4==0) {
 				return true;
 			} else return false;
@@ -77,7 +82,7 @@ public class CustomDate implements  Validator{
                 	daysMonth = 31;
                     break;
                 case 2:
-                	if (monthYear.isleapYear()==true)
+                	if (monthYear.isleapYearCustomDate()==true)
                 		daysMonth = 29;
                 	else 
                 		daysMonth = 28;
@@ -169,12 +174,6 @@ public class CustomDate implements  Validator{
 		System.out.println("День недели в виде перечисления: "+this.dayOfWeek.name);		
 	}
 	
-	public CustomDate(int year, int month, int day ) {
-		this.year = this.new Year(year);	
-		this.month = this.new Month(month);
-		this.day = this.new Day(day);
-		this.enumDayOfWeek();
-	}	
 				
 	@Override
 	public Pattern getPattern() {
@@ -182,55 +181,53 @@ public class CustomDate implements  Validator{
 	}
 
 	
-		public Year getYear() {
-			return year;
-		}
-
-		public void setYear(Year year) {
-			this.year = year;
-		}
-
-		public Month getMonth() {
-			return month;
-		}
-
-		public void setMonth(Month month) {
-			this.month = month;
-		}
-
-		public Day getDay() {
-			return day;
-		}
-
-		public void setDay(Day day) {
-			this.day = day;
-		}
-
-		@Override
-		public String toString() {
-			return this.day.value+"-"+this.month.value+"-"+this.year.value;
-		}
-		
-		@Override
-		public int hashCode() {
-			return Objects.hash(day, month, year);
-		}
-
-		@Override
-		public boolean equals(Object obj) {
-			if (this == obj)
-				return true;
-			if (obj == null)
-				return false;
-			if (getClass() != obj.getClass())
-				return false;
-			CustomDate other = (CustomDate) obj;
-			return Objects.equals(day, other.day) && Objects.equals(month, other.month)
-					&& Objects.equals(year, other.year);
-		}
-		
-		
+	public Year getYear() {
+		return year;
 	}
+
+	public void setYear(Year year) {
+		this.year = year;
+	}
+
+	public Month getMonth() {
+		return month;
+	}
+
+	public void setMonth(Month month) {
+		this.month = month;
+	}
+
+	public Day getDay() {
+		return day;
+	}
+
+	public void setDay(Day day) {
+		this.day = day;
+	}
+
+	@Override
+	public String toString() {
+		return this.day.value+"-"+this.month.value+"-"+this.year.value;
+	}
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(day, month, year);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		CustomDate other = (CustomDate) obj;
+		return Objects.equals(day, other.day) && Objects.equals(month, other.month)
+				&& Objects.equals(year, other.year);
+	}				
+}
 
 
 
