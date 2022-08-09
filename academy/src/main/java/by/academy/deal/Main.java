@@ -220,6 +220,7 @@ public class Main {
 					
 		deal.deal();
 		deal.check();
+		deal.savewritecheck();
 		
 		
 		sc.close();	

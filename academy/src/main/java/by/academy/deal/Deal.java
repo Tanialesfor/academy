@@ -3,7 +3,11 @@ package by.academy.deal;
 import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.Objects;
+import java.io.File;
 import java.time.LocalDate;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class Deal {
 	
@@ -154,5 +158,44 @@ public class Deal {
 			System.out.println("Сдача покупателя: "+buyer.getMoney());
 			System.out.println("Сумма денежных средств у продавца: "+seller.getMoney());
 		}
+
+		public void savewritecheck() {
+			File dirs = new File("deal");
+			if (!dirs.exists()) {
+				dirs.mkdirs();
+			}
+		
+			try (FileWriter writer = new FileWriter("deal/bill.txt");
+				BufferedWriter bufferedWriter = new BufferedWriter(writer)) {
+				
+				bufferedWriter.write("Итоговый чек:");
+				bufferedWriter.newLine();
+				bufferedWriter.write("Продавец: "+seller.getNickname());
+				bufferedWriter.newLine();
+				bufferedWriter.write("Покупатель: "+buyer.getNickname()+"; дата рождения: "+buyer.getDateOfBirth()+"; номер мобильного телефона: "+buyer.getPhone()+"; emael: "+buyer.getEmail());
+				bufferedWriter.newLine();			
+				bufferedWriter.write("Время покупки: "+ (this.buyTime=LocalDateTime.now()));
+				bufferedWriter.newLine();
+				bufferedWriter.write("DeadLine date: "+ (this.deadLineDate = LocalDate.now().plusDays(10)));
+				bufferedWriter.newLine();
+				
+				bufferedWriter.write("Итоговая сумма сделки: "+this.summ);
+				bufferedWriter.newLine();
+				bufferedWriter.write("Внесено покупателем: "+(buyer.getMoney()+this.summ));
+				bufferedWriter.newLine();
+				bufferedWriter.write("Сдача покупателя: "+buyer.getMoney());
+				bufferedWriter.newLine();
+				bufferedWriter.write("Сумма денежных средств у продавца: "+seller.getMoney());
+				bufferedWriter.newLine();
+			
+
+		} catch (IOException ex) {
+			System.out.println(ex.getMessage());
+		}
+		
+		
+		}	
 }
+		
+
 
