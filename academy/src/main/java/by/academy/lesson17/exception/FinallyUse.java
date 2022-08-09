@@ -2,16 +2,16 @@ package by.academy.lesson17.exception;
 
 public class FinallyUse {
 	public static void main(String[] args) {
-//		try {
-//			procA();
-//		} catch (Exception e) {
-//			System.out.println("Исключение выброшено");
-//		} finally {
-//			System.out.println("Выполняем всегда");
-//		}
-//		int i = procB();
-//		System.out.println(i);
-//		System.out.println("method main");
+		try {
+			procA();
+		} catch (Exception e) {
+			System.out.println("Исключение выброшено");
+		} finally {
+			System.out.println("Выполняем всегда");
+		}
+		int i = procB();
+		System.out.println(i);
+		System.out.println("method main");
 		procC();
 	}
 

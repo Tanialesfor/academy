@@ -7,8 +7,8 @@ public class WrongPasswordException  extends Exception{
 		super();
 	}
 
-	public WrongPasswordException(String massage) {
-		super(massage);
+	public WrongPasswordException(String message) {
+		super(message);
 	}
 
 	@Override
