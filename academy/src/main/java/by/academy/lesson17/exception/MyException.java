@@ -1,4 +1,4 @@
-package by.academy.lesson17;
+package by.academy.lesson17.exception;
 
 import java.util.Arrays;
 
