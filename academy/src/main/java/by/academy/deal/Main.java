@@ -3,8 +3,8 @@ package by.academy.deal;
 import java.util.Arrays;
 import java.util.Locale;
 import java.util.Scanner;
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+
 import java.time.LocalDate;
 
 public class Main {
@@ -221,6 +221,11 @@ public class Main {
 		deal.deal();
 		deal.check();
 		deal.savewritecheck();
+		
+		
+		
+		
+		
 		
 		
 		sc.close();	
