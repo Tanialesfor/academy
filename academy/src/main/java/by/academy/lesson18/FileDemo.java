@@ -21,7 +21,24 @@ public class FileDemo {
 		
 		File dirs1 = new File("./");
 		for (File f : dirs1.listFiles()) {
-			System.out.println("Имя файлов:" + f.getName());
+			System.out.println("Имя файла:" + f.getName());
+			System.out.println("Путь: " + f.getPath());
+			System.out.println("Абсолютный путь: " + f.getAbsolutePath());
+			System.out.println("Родительский каталог: " + f.getParent());
+			System.out.println(f.exists() ? "Файл/каталог существует." : "Файл/каталог не существует.");
+			System.out.println(f.canWrite() ? "Файл/каталог доступен для редактирования."
+					: "Файл/каталог не доступен для редактирования.");
+			System.out.println(
+					f.canRead() ? "Файл/каталог доступен для чтения." : "Файл/каталог не доступен для чтения.");
+			System.out.println((f.isDirectory() ? "Каталог." : "Не каталог."));
+			System.out.println(f.isFile() ? "Файл." : "Не файл.");
+			System.out.println(f.isAbsolute() ? "Абсолютный путь." : "Не абсолютный путь.");
+			System.out.println("Дата последнего редактирования: " + new Date(f.lastModified()));
+			System.out.println("Размер: " + f.length() + " байт.");
+
+			
+			
+			
 		}
 	}
 }
