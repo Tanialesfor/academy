@@ -7,34 +7,45 @@ package by.academy.homework5;
 //Сравните результаты и предположите, почему они именно такие.
 
 import java.util.LinkedList;
+import java.util.List;
 import java.util.ArrayList;
 
 public class Task2 {
+
+    public static void methodAdd(List <Integer> list) {
+        for (int i = 0; i < 1000_000; i++) {
+        	int a=(int)(Math.random()*10+1);
+        	list.add(a);
+        }
+    }
+    
+    public static void methodGet(List <Integer> list) {
+        for (int i = 0; i < 100_000; i++) {
+        	int b = (int) (Math.random() * (1000_000 - 1));
+            list.get(b);
+        }
+    }    
+	
 	public static void main(String[] args) {
 		
 		ArrayList <Integer> arrayList=new ArrayList<>();
 		LinkedList <Integer> linkedList=new LinkedList<>();
 
-		final int a = 1_000_000;
-        final int b = 100_000;
-	        for (int i = 0; i < a; i++) {
-	            arrayList.add((int)Math.random()*10+1);
-	            linkedList.add((int)Math.random()*10+1);
-	        }
-        
-		        long startTime1 = System.currentTimeMillis();
-		        for (int i = 0; i < b; i++) {
-		            arrayList.get((int) (Math.random() * (a - 1)));
-		        }
-		        long endTime1=System.currentTimeMillis();
-		        System.out.println("Время выполнения программы для ArrayList: " + (endTime1-startTime1)+" ms");
+		methodAdd(arrayList);
+		methodAdd(linkedList);
+		
+        long startTime1 = System.currentTimeMillis();
+        methodGet(arrayList);
+        long endTime1=System.currentTimeMillis();
+        System.out.println("Время выполнения программы для ArrayList: " + (endTime1-startTime1)+" ms");
 
+        long startTime2 = System.currentTimeMillis();
+        methodGet(linkedList);
+        long endTime2=System.currentTimeMillis();
+        System.out.println("Время выполнения программы для LinkedList: " + (endTime2-startTime2)+" ms");
         
-			        long startTime2 = System.currentTimeMillis();
-			        for (int i = 0; i < b; i++) {
-			            linkedList.get((int) (Math.random() * (a - 1)));
-			        }
-			        long endTime2=System.currentTimeMillis();
-			        System.out.println("Время выполнения программы для LinkedList: " + (endTime2-startTime2)+" ms");
-				}
+        System.out.println("Вывод: время выполнения программы для ArrayList намного короче, чем для LinkedList, "
+        		+ "потому что взятие элемента по индексу у ArrayList происходит быстро (это достоинство класса ArrayList),"
+        		+ "а взятие элемента по индексу у LinkedList происходит медленно (это один из минусов класса LinkedList). ");
+		}
 }
