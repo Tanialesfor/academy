@@ -74,13 +74,26 @@ public class Solution {
 	/*
 	 * For your reference:
 	 *
-	 * DoublyLinkedList { int data; DoublyLinkedListNode next;
+	 * DoublyLinkedListNode { int data; DoublyLinkedListNode next;
 	 * DoublyLinkedListNode prev; }
 	 *
 	 */
 	public static DoublyLinkedListNode reverse(DoublyLinkedList list) {
+		DoublyLinkedListNode node = list.head;
 		
-		return null;
+		while (node!=null) {
+			DoublyLinkedListNode t = node.next;
+			node.next=node.prev;
+			node.prev=t;
+			
+			node = t;
+		} 
+		
+		node=list.head;
+		list.head=list.tail;
+		list.tail=node;
+		
+		return list.head;
 	}
 
 	private static final Scanner scanner = new Scanner(System.in);
@@ -97,7 +110,7 @@ public class Solution {
 			scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
 
 			llist.insertNode(llistItem);
-		}
+		}		
 		DoublyLinkedListNode llist1 = reverse(llist);
 
 		printDoublyLinkedList(llist1, " ");
