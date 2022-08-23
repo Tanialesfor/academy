@@ -1,6 +1,6 @@
 package by.academy.lesson18;
 
-// Создать папку myPackage c файлом myFirstFile внутри. Запустить пронрамму два раза.
+// Создать папку myPackage c файлом myFirstFile внутри. Запустить программу два раза.
 // Пробежаться по всем файлам в папке academy и вывести все имена файлов на экран (не папок)
 import java.io.File;
 import java.io.IOException;

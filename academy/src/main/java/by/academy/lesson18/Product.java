@@ -3,8 +3,7 @@ package by.academy.lesson18;
 import java.io.Serializable;
 import java.util.Objects;
 
-public class Product implements Serializable {
-	
+public class Product  implements Serializable {
 	private static final long serialVersionUID = 1L;
 	protected String name;
 	protected transient double price;// transient модификатор, если мы не хотим данное поле сериализовать
