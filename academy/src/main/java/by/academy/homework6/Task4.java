@@ -20,8 +20,6 @@ public class Task4 {
 			dir.mkdirs();
 		}
 		
-		System.out.println(dir.exists());
-		
 		File resultFile = new File(dir, "result.txt");
 		if (!resultFile.exists()) {
 			resultFile.createNewFile();
@@ -30,32 +28,28 @@ public class Task4 {
 		try (BufferedReader br = new BufferedReader(new FileReader("src/homework6/firstFile.txt"));
 				BufferedWriter bw = new BufferedWriter(new FileWriter(resultFile))){
 									
-			String str = null;
-			int size=0;
+			String str = "";
+			String text = "";
+
 			while ((str=br.readLine()) != null) {
-				for (int i=0;i<str.length(); i++) {
-					size=br.read();
-					size++;
-				}
-			    
-				for (int i=1; i<=100; i++) {
-				    File file = new File(dir, i+".txt");
-					if (!file.exists()) {
-						file.createNewFile();
-				    }
-					FileWriter fileWr=new FileWriter(file);
-					int countOfSymbol=(int)	Math.random()*576;
-					fileWr.write(str.substring(0, countOfSymbol));
-					fileWr.close();
-				}
-						
-//				if(str.length()==576) {
-//					break;
-//				}
+				text=text+str;
 		    }
-			System.out.println(size);
+			
+			for (int i=1; i<=100; i++) {
+			    File file = new File(dir, i+".txt");
+				if (!file.exists()) {
+					file.createNewFile();
+			    }
+				FileWriter fileWr=new FileWriter(file);
+				int countOfSymbol=(int)	(Math.random()*574);
+				fileWr.write(text.substring(0, countOfSymbol));
+				fileWr.close();
+			}			
+			
+			System.out.println("Количество символов в файле: "+text.length());
+			
 			for (File f : dir.listFiles()) {
-				bw.write("Имя файла: "+ f.getName()+"размер файла: "+f.length());
+				bw.write("Имя файла: "+ f.getName()+" размер файла: "+f.length()+"\n");
 			}
 			
 		} catch (IOException e) {
