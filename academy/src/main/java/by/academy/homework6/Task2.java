@@ -25,20 +25,17 @@ public class Task2 {
 		if (!dir.exists()) {
 			dir.mkdirs();
 		}
-
 		
 		File firstFile = new File(dir, "firstFile.txt");
 		if (!firstFile.exists()) {
 			firstFile.createNewFile();
 		}
 		
-				
 		File resultFile = new File(dir, "result.txt");
 		if (!resultFile.exists()) {
 			resultFile.createNewFile();
 		}
 			
-				
 		try ( BufferedWriter bw = new BufferedWriter(new FileWriter(firstFile));
 			BufferedWriter bwResult = new BufferedWriter(new FileWriter(resultFile));
 			BufferedReader br = new BufferedReader(new FileReader(firstFile))) {
