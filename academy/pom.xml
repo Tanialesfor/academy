@@ -3,5 +3,15 @@
   <groupId>academy</groupId>
   <artifactId>academy</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <name>academy</name>
+ <name>academy</name>
+
+   <dependencies>
+          <!-- https://mvnrepository.com/artifact/junit/junit -->
+          <dependency>
+		        <groupId>junit</groupId>
+		        <artifactId>junit</artifactId>
+		        <version>4.13.2</version>
+		        <scope>test</scope>
+          </dependency>
+    </dependencies>
 </project>
