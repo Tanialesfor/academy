@@ -5,6 +5,13 @@ public class Cat {
 	protected int age;
 	private int codename;
 	
+	
+	public Cat () {
+		super();
+	}
+	protected void eat() {
+		System.out.println("Кот кушает");
+	}
 	public String getName() {
 		return name;
 	}
@@ -23,8 +30,6 @@ public class Cat {
 	public void setCodename(int codename) {
 		this.codename = codename;
 	}
-	protected void eat() {
-		System.out.println("Кот кушает");
-	}
+	
 
 }

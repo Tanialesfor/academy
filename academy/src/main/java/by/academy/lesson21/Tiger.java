@@ -3,13 +3,19 @@ package by.academy.lesson21;
 public class Tiger extends Cat{
 	public String nickname;
 	protected double weight;
-	private int codenicknick;
+	private int codenickname;
 	
-	
+		
 	public String getNickname() {
 		return nickname;
 	}
+	protected void slep () {
+		System.out.println("Тигр бежит");
+	}
 
+	private void run() {
+		System.out.println("Тигр бежит");
+	}
 
 	public void setNickname(String nickname) {
 		this.nickname = nickname;
@@ -26,17 +32,13 @@ public class Tiger extends Cat{
 	}
 
 
-	public int getCodenicknick() {
-		return codenicknick;
+	public int getCodenickname() {
+		return codenickname;
 	}
 
 
-	public void setCodenicknick(int codenicknick) {
-		this.codenicknick = codenicknick;
+	public void setCodenickname(int codenickname) {
+		this.codenickname = codenickname;
 	}
-
-
-	protected void run() {
-		System.out.println("Тигр бежит");
-	}
+	
 }
