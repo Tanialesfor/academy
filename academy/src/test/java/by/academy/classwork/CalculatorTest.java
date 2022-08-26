@@ -41,7 +41,7 @@ public class CalculatorTest {
 		public void testFail() {
 			Assert.fail("Ахахахах");
 		}
-		
+//		fkjhkjh
 	}
 		
 

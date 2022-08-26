@@ -14,7 +14,7 @@ public class ParameterizeTest extends Assert {
 	private int valueA;
 	private int valueB;
 	private int expected;
-	
+//	
 	public ParameterizeTest (int valueA,int valueB,int expected) {
 		this.valueA=valueA;
 		this.valueB=valueB;

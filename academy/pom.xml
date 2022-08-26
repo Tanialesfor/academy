@@ -3,7 +3,7 @@
   <groupId>academy</groupId>
   <artifactId>academy</artifactId>
   <version>0.0.1-SNAPSHOT</version>
- <name>academy</name>
+  <name>academy</name>
 
    <dependencies>
           <!-- https://mvnrepository.com/artifact/junit/junit -->

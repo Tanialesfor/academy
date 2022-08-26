@@ -2,6 +2,8 @@ package by.academy.lesson22;
 
 public class Calculator {
 	
+	public Calculator () {}
+	
 	public static double sum (double x, double y) {
 		return x+y;
 	}
@@ -14,4 +16,5 @@ public class Calculator {
 	public static double multiple (double x, double y) {
 		return x*y;
 	}
+	
 }
