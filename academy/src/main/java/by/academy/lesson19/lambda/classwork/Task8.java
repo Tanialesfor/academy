@@ -14,11 +14,11 @@ public class Task8 {
 			Random rand = new Random();
 			return rand.nextInt(11);
 		};
-//		for (int i = 0; i < 100; i++) {
-//			System.out.println(random.get());
-//		}
+		for (int i = 0; i < 100; i++) {
+			System.out.println(random.get());
+		}
 
-		Function<Integer, Integer> generator = Integer::new;
-		System.out.println(generator.apply(new Random().nextInt(11)));
+//		Function<Integer, Integer> generator = Integer::new;
+//		System.out.println(generator.apply(new Random().nextInt(11)));
 	}
 }
