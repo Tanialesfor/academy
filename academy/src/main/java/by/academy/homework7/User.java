@@ -8,7 +8,7 @@ import java.util.Objects;
 public class User extends Person {
 	private String login;
 	private String password;
-	private String email;
+	public String email;
 	
 	public User() {};
 	
@@ -66,6 +66,4 @@ public class User extends Person {
 		return Objects.equals(email, other.email) && Objects.equals(login, other.login)
 				&& Objects.equals(password, other.password);
 	}
-	
-	
 }

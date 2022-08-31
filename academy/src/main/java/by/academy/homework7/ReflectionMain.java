@@ -16,7 +16,6 @@ import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
-
 public class ReflectionMain {
 	public static void main(String[] args)  {
 		
@@ -39,12 +38,16 @@ public class ReflectionMain {
 			for (Method mu: userClass.getMethods()) {
 				System.out.println(mu);
 				}
-								
+						
+			System.out.println("Вывод полей getField (name)");	
+			Field emailField = userClass.getField("email");
+			System.out.println(emailField);
+			
 			System.out.println("Вывод полей getFields()");
 			for (Field fu: userClass.getFields()) {
 				System.out.println(fu);
 				}
-			
+						
 			System.out.println("Вывод методов getDeclaredMethod (name)");
 			Method getPrintUserInfoMethod=userClass.getDeclaredMethod("printUserInfo");
 			System.out.println(getPrintUserInfoMethod);
@@ -53,21 +56,27 @@ public class ReflectionMain {
 			for (Method mdu: userClass.getDeclaredMethods()) {
 				System.out.println(mdu);
 				}
-			System.out.println("Вывод методов getDeclaredField (name)");
+			
+			System.out.println("Вывод полей getDeclaredField (name)");
 			Field loginField = userClass.getDeclaredField("login");
 			System.out.println(loginField);
 			Field passwordField = userClass.getDeclaredField("password");
 			System.out.println(passwordField);
-			Field emailField = userClass.getDeclaredField("email");
-			System.out.println(emailField);
-			
-			System.out.println("Вывод методов getDeclaredFields()");
+						
+			System.out.println("Вывод полей getDeclaredFields()");
 			for (Field fdu: userClass.getDeclaredFields()) {
 				System.out.println(fdu);
 				}
+			for (Field fdp: personClass.getDeclaredFields()) {
+				System.out.println(fdp);
+				}
+			
+			System.out.println("Ловим ошибку:");
+			Field lastNameField = userClass.getField("lastName");
+			System.out.println(lastNameField);
 				
 		} catch (NoSuchMethodException | NoSuchFieldException | SecurityException e) {
-			e.printStackTrace();
+			System.out.println("Метод/поле не найдено" + e);
 		}
 		
 		try {
@@ -82,7 +91,6 @@ public class ReflectionMain {
 			System.out.println("Значение поля password: " + passwordField.get(user));
 			
 			Field emailField = userClass.getDeclaredField("email");
-			emailField.setAccessible(true);
 			emailField.set(user, "fgjhfisf@gmail.com");		
 			System.out.println("Значение поля email: " + emailField.get(user));
 								
@@ -91,6 +99,7 @@ public class ReflectionMain {
 			System.out.println("Значение поля firstName: " + firstNameField.get(person));
 			
 			Field lastNameField = personClass.getDeclaredField("lastName");
+			lastNameField.setAccessible(true);
 			lastNameField.set(person, "Horas");		
 			System.out.println("Значение поля lastName: " + lastNameField.get(person));
 			
@@ -105,12 +114,9 @@ public class ReflectionMain {
 			System.out.println("Вызов toString через invoke:");
 			Method toStringMethod=userClass.getMethod("toString");
 			System.out.println(toStringMethod.invoke(user));
-			
-			
-			
-		} catch (NoSuchFieldException | SecurityException | IllegalArgumentException | IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
+								
+		} catch (NoSuchFieldException | NoSuchMethodException| SecurityException | IllegalArgumentException | IllegalAccessException | InvocationTargetException  e) {
 			e.printStackTrace();
 		}
-		
 	}
 }

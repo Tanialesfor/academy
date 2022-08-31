@@ -12,7 +12,5 @@ public Calculator () {}
 	public static int divide (int x, int y) {
 		return x/y;
 	}
-	public static double multiple (double x, double y) {
-		return x*y;
-	}
+	
 }

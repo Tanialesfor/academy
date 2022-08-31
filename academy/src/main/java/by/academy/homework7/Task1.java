@@ -28,15 +28,6 @@ public class Task1 {
         Map<Long, String> map=list.stream()
         						  .collect(Collectors.toMap(i->i,s->("Number: "+s),(oldvalue,newvalue)->oldvalue));
         
-//        Map<Object, Object> map=LongStream.generate(() -> random.nextInt(101))
-//        		.limit(100)        							
-//                .boxed()
-//                .map(i->(long) (i*Math.PI-20))
-//				.filter(i->i<100)
-//				.sorted()
-//				.skip(3)
-//        		.collect(Collectors.toMap(i->i,s->("Number: "+s),(oldvalue,newvalue)->oldvalue));
-        
         System.out.println(list);
         System.out.println(map);
     }

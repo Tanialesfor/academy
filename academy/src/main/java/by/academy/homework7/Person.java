@@ -5,8 +5,8 @@ import java.util.Objects;
 //a)	Создать свой класс Person с полями: firstName, lastName, age, dateOfBirth 
 public class Person {
 	protected String firstName;
-	protected String lastName;
-	protected double age;
+	private String lastName;
+	public double age;
 	protected String dateOfBirth;
 		
 	public Person () {};
@@ -67,5 +67,4 @@ public class Person {
 		return "Person [firstName=" + firstName + ", lastName=" + lastName + ", age=" + age + ", dateOfBirth="
 				+ dateOfBirth + "]";
 	}
-	
 }
