@@ -1,5 +1,9 @@
 package by.academy.finalwork;
 
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.Arrays;
 import java.util.Scanner;
 
 //Реализуйте метод для выполнения простейшего сжатия строк с использованием счетчика
@@ -10,68 +14,40 @@ import java.util.Scanner;
 //только из букв верхнего и нижнего регистра (a-z).
 
 public class Task1 {
-	int count=1; 
-	public int compress(String str) {
-		for (int i = 0; i < str.length(); i++) {
-	        char s = str.charAt(i);
-//	        count = 0;
-	        for (int j = i+1; j < str.length(); j++) {
-	            char s1 = str.charAt(j);
-	            if(s==s1){
-	                count++;
-	            }
-	            
-	        }
-	       return count; 
-//	        String newstr=
-//        }
-//		if(str.length()>newstr.length()) {str=newstr.toString();}
+
+	public static String compress(String str) {
+		int count=0;
+		char [] chararray = str.toCharArray();
+		char ch=chararray[0];
+		StringBuilder stb = new StringBuilder();		
+
+		for (int i=0;i<chararray.length;i++) {		
+			if (ch==chararray[i]) {
+				count++;
+			}
+			else {
+				stb.append(ch);
+				stb.append(count);
+				ch=chararray[i];
+				count=1;
+			}
+			if (i==chararray.length-1) {
+				stb.append(ch);
+				stb.append(count);				
+			}
 		}
-			
-	}
-//	public String compress(String str) {
-//		StringBuilder newstr = new StringBuilder(str);
-//		int count=1;	
-//		int index=0;
-//
-//		while (index<newstr.length()) {
-//			while (str.charAt(index)==newstr.charAt(index+1)) {
-//				count++;
-//				newstr.charAt(index+1)=count;
-//			}
-//		}
-//	
-//		if(str.length()>newstr.toString().length()) str=newstr.toString();
-//		
-//		return str;
-//	}
-	
+		
+		if (str.length()<=stb.length()) 
+			return str;
+		else return stb.toString();
+		
+	}	
 	
 	public static void main(String[] args) {
-	Scanner sc= new Scanner(System.in);
-	System.out.println("Введите строку, состоящую только из букв верхнего и нижнего регистра (a-z):");
-//	StringBuilder str= new StringBuilder(sc.next());
-	String str=sc.next();
-	
-//	for (int i=0; i<str.length(); i++) {
-//			char simvol=str.charAt(i);
-//			if (str.indexOf(simvol)>-1) {
-//				count++;
-//				break;
-//			}
-//			newstr="simvol"+count;	
-//		}
-//	   System.out.println(newstr);
-
-	
-//				System.out.println(newstr);
-//		if (str.length()>newstr.length())
-//		return String newstr;
-//		else 
-//			return str;
-		
-	Task1 test=new Task1();
-	System.out.println(test.compress(str));
-	sc.close();
+		Scanner sc= new Scanner(System.in);
+		System.out.println("Введите строку, состоящую только из букв верхнего и нижнего регистра (a-z):");
+		String str=sc.next();
+		System.out.println(compress(str));	
+		sc.close();
 	}
 }

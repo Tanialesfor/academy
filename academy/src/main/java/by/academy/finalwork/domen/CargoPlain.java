@@ -4,8 +4,6 @@ import java.util.Objects;
 
 public class CargoPlain extends Plain {
 	
-	private double fuelUse;
-	private double maxWeight;
 	private double volumeOfCompartment;
 	
 	public CargoPlain () {
@@ -13,25 +11,7 @@ public class CargoPlain extends Plain {
 	}
 	
 	public CargoPlain (String name,String type,double length, int capacity,double carrying, double flightRange, double fuelUse,double maxWeight) {
-		super (name, type, length, capacity, carrying, flightRange);
-		this.fuelUse=fuelUse;
-		this.maxWeight=maxWeight;
-	}
-
-	public double getFuelUse() {
-		return fuelUse;
-	}
-
-	public void setFuelUse(double fuelUse) {
-		this.fuelUse = fuelUse;
-	}
-
-	public double getMaxWeight() {
-		return maxWeight;
-	}
-
-	public void setMaxWeight(double maxWeight) {
-		this.maxWeight = maxWeight;
+		super (name, type, length, capacity, carrying, flightRange, fuelUse, maxWeight);
 	}
 
 	public double getVolumeOfCompartment() {
@@ -46,7 +26,7 @@ public class CargoPlain extends Plain {
 	public int hashCode() {
 		final int prime = 31;
 		int result = super.hashCode();
-		result = prime * result + Objects.hash(fuelUse, maxWeight, volumeOfCompartment);
+		result = prime * result + Objects.hash(volumeOfCompartment);
 		return result;
 	}
 
@@ -59,16 +39,12 @@ public class CargoPlain extends Plain {
 		if (getClass() != obj.getClass())
 			return false;
 		CargoPlain other = (CargoPlain) obj;
-		return Double.doubleToLongBits(fuelUse) == Double.doubleToLongBits(other.fuelUse)
-				&& Double.doubleToLongBits(maxWeight) == Double.doubleToLongBits(other.maxWeight)
-				&& Double.doubleToLongBits(volumeOfCompartment) == Double.doubleToLongBits(other.volumeOfCompartment);
+		return Double.doubleToLongBits(volumeOfCompartment) == Double.doubleToLongBits(other.volumeOfCompartment);
 	}
 
 	@Override
 	public String toString() {
-		return "CargoPlain [fuelUse=" + fuelUse + ", maxWeight=" + maxWeight + ", volumeOfCompartment="
-				+ volumeOfCompartment + "]";
+		return "[name=" + name + ", type=" + type + ", length=" + length + ", capacity=" + capacity + ", carrying="
+				+ carrying + ", flightRange=" + flightRange +", fuelUse=" + fuelUse + ", maxWeight=" + maxWeight + "]\n";
 	}
-
-	
 }

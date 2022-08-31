@@ -2,8 +2,7 @@ package by.academy.finalwork.domen;
 
 import java.util.Objects;
 
-
-public abstract class Plain {
+public abstract class Plain implements Comparable<Plain>{
 	
 	protected String name;
 	protected String type;
@@ -11,10 +10,12 @@ public abstract class Plain {
 	protected int capacity;
 	protected double carrying;
 	protected double flightRange;
+	protected double fuelUse;
+	protected double maxWeight;
 	
 	public Plain () {}
 	
-	public Plain (String name,String type, double length, int capacity, double carrying, double flightRange) {
+	public Plain (String name,String type, double length, int capacity, double carrying, double flightRange, double fuelUse, double maxWeight) {
 		super();
 		this.name = name;
 		this.type = type;
@@ -22,6 +23,8 @@ public abstract class Plain {
 		this.capacity = capacity;
 		this.carrying = carrying;
 		this.flightRange = flightRange;
+		this.fuelUse = fuelUse;
+		this.maxWeight = maxWeight;
 	}
 
 	public String getName() {
@@ -72,9 +75,25 @@ public abstract class Plain {
 		this.flightRange = flightRange;
 	}
 
+	public double getFuelUse() {
+		return fuelUse;
+	}
+
+	public void setFuelUse(double fuelUse) {
+		this.fuelUse = fuelUse;
+	}
+
+	public double getMaxWeight() {
+		return maxWeight;
+	}
+
+	public void setMaxWeight(double maxWeight) {
+		this.maxWeight = maxWeight;
+	}
+
 	@Override
 	public int hashCode() {
-		return Objects.hash(capacity, carrying, flightRange, length, name, type);
+		return Objects.hash(capacity, carrying, flightRange, fuelUse, length, maxWeight, name, type);
 	}
 
 	@Override
@@ -89,7 +108,9 @@ public abstract class Plain {
 		return capacity == other.capacity
 				&& Double.doubleToLongBits(carrying) == Double.doubleToLongBits(other.carrying)
 				&& Double.doubleToLongBits(flightRange) == Double.doubleToLongBits(other.flightRange)
+				&& Double.doubleToLongBits(fuelUse) == Double.doubleToLongBits(other.fuelUse)
 				&& Double.doubleToLongBits(length) == Double.doubleToLongBits(other.length)
+				&& Double.doubleToLongBits(maxWeight) == Double.doubleToLongBits(other.maxWeight)
 				&& Objects.equals(name, other.name) && Objects.equals(type, other.type);
 	}
 
@@ -98,7 +119,10 @@ public abstract class Plain {
 		return "Plain [name=" + name + ", type=" + type + ", length=" + length + ", capacity=" + capacity
 				+ ", carrying=" + carrying + ", flightRange=" + flightRange + "]";
 	}
-
 	
+	@Override
+	public int compareTo(Plain plain) {
+		return (int) (this.flightRange-plain.flightRange);
+	}	
 }
 	

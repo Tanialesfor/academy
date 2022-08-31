@@ -4,8 +4,6 @@ import java.util.Objects;
 
 public class PassengerPlain extends Plain{
 	
-	private double fuelUse;
-	private double maxWeight;
 	private int countEngine;
 	
 	public PassengerPlain () {
@@ -13,27 +11,9 @@ public class PassengerPlain extends Plain{
 	}
 	
 	public PassengerPlain (String name,String type,double length, int capacity, double carrying, double flightRange, double fuelUse,double maxWeight) {
-		super (name, type, length, capacity, carrying, flightRange );
-		this.fuelUse=fuelUse;
-		this.maxWeight=maxWeight;
+		super (name, type, length, capacity, carrying, flightRange, fuelUse, maxWeight);
 	}
-
-	public double getFuelUse() {
-		return fuelUse;
-	}
-
-	public void setFuelUse(double fuelUse) {
-		this.fuelUse = fuelUse;
-	}
-
-	public double getMaxWeight() {
-		return maxWeight;
-	}
-
-	public void setMaxWeight(double maxWeight) {
-		this.maxWeight = maxWeight;
-	}
-
+	
 	public int getCountEngine() {
 		return countEngine;
 	}
@@ -46,7 +26,7 @@ public class PassengerPlain extends Plain{
 	public int hashCode() {
 		final int prime = 31;
 		int result = super.hashCode();
-		result = prime * result + Objects.hash(countEngine, fuelUse, maxWeight);
+		result = prime * result + Objects.hash(countEngine);
 		return result;
 	}
 
@@ -59,16 +39,12 @@ public class PassengerPlain extends Plain{
 		if (getClass() != obj.getClass())
 			return false;
 		PassengerPlain other = (PassengerPlain) obj;
-		return countEngine == other.countEngine
-				&& Double.doubleToLongBits(fuelUse) == Double.doubleToLongBits(other.fuelUse)
-				&& Double.doubleToLongBits(maxWeight) == Double.doubleToLongBits(other.maxWeight);
+		return countEngine == other.countEngine;
 	}
 
 	@Override
 	public String toString() {
-		return "PassengerPlain [fuelUse=" + fuelUse + ", maxWeight=" + maxWeight + ", countEngine=" + countEngine + "]";
+		return "[name=" + name + ", type=" + type + ", length=" + length + ", capacity=" + capacity + ", carrying="
+				+ carrying + ", flightRange=" + flightRange +", fuelUse=" + fuelUse + ", maxWeight=" + maxWeight + "]\n";
 	}
-
-	
-		
 }
