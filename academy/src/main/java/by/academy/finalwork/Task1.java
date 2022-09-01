@@ -31,11 +31,10 @@ public class Task1 {
 				ch=chararray[i];
 				count=1;
 			}
-			if (i==chararray.length-1) {
-				stb.append(ch);
-				stb.append(count);				
-			}
 		}
+		
+		stb.append(ch);
+		stb.append(count);	
 		
 		if (str.length()<=stb.length()) 
 			return str;
