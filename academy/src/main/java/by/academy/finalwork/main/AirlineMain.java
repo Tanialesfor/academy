@@ -4,9 +4,8 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.SortedSet;
-import java.util.TreeSet;
+import java.util.Scanner;
+
 import by.academy.finalwork.domen.*;
 import by.academy.finalwork.service.*;
 
@@ -18,8 +17,11 @@ import by.academy.finalwork.service.*;
 public class AirlineMain {
 	public static void main(String[] args) throws IOException {
 		
-		ArrayList <Plain> plains = new ArrayList<Plain> ();
+		double from=0;
+		double to=0;
 		Airline airline = null;
+		ArrayList <Plain> plains = new ArrayList<Plain> ();
+		
 		try ( BufferedReader br = new BufferedReader(new FileReader("src/finalwork/file.txt"))) {
 			String str;
 			while ((str=br.readLine()) != null) {
@@ -51,15 +53,59 @@ public class AirlineMain {
 		}	
 		
 		if (plains.isEmpty()==false) { 
-//			Plain[] plainsarray = new Plain[plains.size()];
 			airline = new Airline(plains);
-			//airline = new Airline(plains.toArray(new Plain[0]));
 		}	
 		
-		System.out.println(airline.toString());
-		System.out.println(airline.getCapacityAll());
-		System.out.println(airline.getcarryingAll());
+		System.out.println("Моя авиакомпания: "+"\n"+airline.toString());
+		
+		System.out.println("Общая вместимость авиакомпании: "+airline.getCapacityAll());
+		
+		System.out.println("Общая грузоподъемность авиакомпании: "+airline.getCarryingAll());
+		
 		airline.sortPlain();
-
-	}
+		
+		System.out.println("Введите нижнюю границу диапазона чисел типа double больше или равно 0 для параметра потребления горючего:");
+		Scanner sc= new Scanner(System.in);
+		while (sc.hasNext()) {
+			if (sc.hasNextDouble()) {
+				from=sc.nextDouble();
+				if  (from<0) {
+					System.out.println("Число может быть только положительным.");	
+				} else {
+					break;
+				}
+			 } else {
+				System.out.println("Введено неккоректное число. Повторите ввод");  
+			    sc.next();
+			 }
+		 }  
+		
+		System.out.println("Введите верхнюю границу диапазона чисел типа double больше или равно "+ from+" для параметра потребления горючего:");		
+		while (sc.hasNext()) {
+			if (sc.hasNextDouble()) {
+				to=sc.nextDouble();
+				if  (to<from) {
+					System.out.println("Число верхней границы не может быть меньше числа нижней границы.");	
+					System.out.println("Введено неккоректное число. Повторите ввод");  
+				} else 	{
+					break;
+				}
+			 } else {
+				System.out.println("Введено неккоректное число. Повторите ввод");  
+			    sc.next();
+			 }
+		 }  
+		
+//		Plain plain=airline.findPlain(from, to);
+//		if (plain!=null) {
+//			System.out.println("Самолет, который соответствует заданному диапазону по расходу горючего:"+"\n"+plain);
+//		} else {
+//			System.out.println("По заданным параметрам подходящий самолёт не найден.");
+//		}
+		
+		System.out.println("Самолет, который соответствует заданному диапазону по расходу горючего:"+"\n"+airline.findPlain(from, to));	
+		
+		sc.close();	
+	}	
 }
+	

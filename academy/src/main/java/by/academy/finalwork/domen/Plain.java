@@ -92,6 +92,11 @@ public abstract class Plain implements Comparable<Plain>{
 	}
 
 	@Override
+	public int compareTo(Plain plain) {
+		return (int) (this.flightRange-plain.flightRange);
+	}
+	
+	@Override
 	public int hashCode() {
 		return Objects.hash(capacity, carrying, flightRange, fuelUse, length, maxWeight, name, type);
 	}
@@ -117,12 +122,11 @@ public abstract class Plain implements Comparable<Plain>{
 	@Override
 	public String toString() {
 		return "Plain [name=" + name + ", type=" + type + ", length=" + length + ", capacity=" + capacity
-				+ ", carrying=" + carrying + ", flightRange=" + flightRange + "]";
+				+ ", carrying=" + carrying + ", flightRange=" + flightRange + ", fuelUse=" + fuelUse + ", maxWeight="
+				+ maxWeight + "]";
 	}
-	
-	@Override
-	public int compareTo(Plain plain) {
-		return (int) (this.flightRange-plain.flightRange);
-	}	
+
+
+		
 }
 	

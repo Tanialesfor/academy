@@ -2,12 +2,15 @@ package by.academy.finalwork.service;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Objects;
+
 import by.academy.finalwork.domen.Plain;
 
 //Авиакомпания. Определить иерархию самолетов. Создать авиакомпанию.
 //Посчитать общую вместимость и грузоподъемность. Провести сортировку самолетов
 //компании по дальности полета. Найти самолет в компании, соответствующий заданному
 //диапазону параметров потребления горючего.
+
 public class Airline {
 	
 	private ArrayList <Plain> plains;
@@ -29,7 +32,7 @@ public class Airline {
 		return capacityAll;
 	}
 	
-	public double getcarryingAll () {
+	public double getCarryingAll () {
 		for (int i=0; i<plains.size();i++) {
 			this.carryingAll+=plains.get(i).getCarrying();
 		}	
@@ -37,17 +40,36 @@ public class Airline {
 	}
 	
 	public void sortPlain() {
-		Collections.sort(this.plains);
-		System.out.println(this.toString());
+		Collections.sort(plains);
+		System.out.println("Результат сортировки по дальности полета самолетов: "+ "\n"+plains.toString());
 	}
 	
 	public Plain findPlain(Double from, Double to) {
-		for (int i=0;i<this.plains.size();i++) {
-			if (this.plains.get(i).getFlightRange()>=from && this.plains.get(i).getFlightRange()<=to) {
-				return this.plains.get(i);
+		for (int i=0;i<plains.size();i++) {
+			if (plains.get(i).getFuelUse()>=from && plains.get(i).getFuelUse()<=to) {
+				return plains.get(i);
 			}
 		}
 		return null;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(capacityAll, carryingAll, plains);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Airline other = (Airline) obj;
+		return capacityAll == other.capacityAll
+				&& Double.doubleToLongBits(carryingAll) == Double.doubleToLongBits(other.carryingAll)
+				&& Objects.equals(plains, other.plains);
 	}
 
 	@Override

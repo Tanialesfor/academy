@@ -16,37 +16,34 @@ import java.util.Scanner;
 public class Task1 {
 
 	public static String compress(String str) {
-		int count=0;
-		char [] chararray = str.toCharArray();
-		char ch=chararray[0];
+		int count=1;
+		char [] charArray = str.toCharArray();
+		char ch=charArray[0];
 		StringBuilder stb = new StringBuilder();		
 
-		for (int i=0;i<chararray.length;i++) {		
-			if (ch==chararray[i]) {
+		for (int i=1;i<charArray.length;i++) {		
+			if (ch==charArray[i]) {
 				count++;
 			}
 			else {
 				stb.append(ch);
 				stb.append(count);
-				ch=chararray[i];
+				ch=charArray[i];
 				count=1;
 			}
 		}
-		
 		stb.append(ch);
 		stb.append(count);	
-		
 		if (str.length()<=stb.length()) 
 			return str;
 		else return stb.toString();
-		
 	}	
 	
 	public static void main(String[] args) {
 		Scanner sc= new Scanner(System.in);
 		System.out.println("Введите строку, состоящую только из букв верхнего и нижнего регистра (a-z):");
 		String str=sc.next();
-		System.out.println(compress(str));	
+		System.out.println("Итоговая строка по методу: "+compress(str));
 		sc.close();
 	}
 }
