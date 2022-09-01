@@ -41,8 +41,8 @@ public class Airline {
 	
 	public void sortPlain() {
 		Collections.sort(plains);
-		System.out.println("Результат сортировки по дальности полета самолетов: "+ "\n"+plains.toString());
 	}
+	
 	public ArrayList <Plain> findAllPlain(Double from, Double to) {
 		ArrayList <Plain> plainsAll=new ArrayList <Plain>();
 		for (int i=0;i<plains.size();i++) {

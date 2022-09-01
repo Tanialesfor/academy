@@ -63,6 +63,7 @@ public class AirlineMain {
 		System.out.println("Общая грузоподъемность авиакомпании: "+airline.getCarryingAll());
 		
 		airline.sortPlain();
+		System.out.println("Результат сортировки по дальности полета самолетов: "+ "\n"+plains.toString());
 		
 		System.out.println("Введите нижнюю границу диапазона чисел типа double больше или равно 0 для параметра потребления горючего:");
 		Scanner sc= new Scanner(System.in);
@@ -95,7 +96,7 @@ public class AirlineMain {
 			    sc.next();
 			 }
 		 }  
-		
+//		ArrayList <Plain> plains
 		System.out.println("Самолеты, которые соответствуют заданному диапазону по расходу горючего:"+"\n"+airline.findAllPlain(from, to));
 		
 		sc.close();	

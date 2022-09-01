@@ -1,4 +1,4 @@
-package by.academy.finalwork.domen;
+package by.academy.finalwork.service;
 
 import java.io.BufferedWriter;
 import java.io.File;
