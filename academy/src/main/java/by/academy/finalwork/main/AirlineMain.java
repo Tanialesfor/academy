@@ -96,14 +96,8 @@ public class AirlineMain {
 			 }
 		 }  
 		
-//		Plain plain=airline.findPlain(from, to);
-//		if (plain!=null) {
-//			System.out.println("Самолет, который соответствует заданному диапазону по расходу горючего:"+"\n"+plain);
-//		} else {
-//			System.out.println("По заданным параметрам подходящий самолёт не найден.");
-//		}
-		
 		System.out.println("Самолет, который соответствует заданному диапазону по расходу горючего:"+"\n"+airline.findPlain(from, to));	
+//		System.out.println("Самолеты, которые соответствуют заданному диапазону по расходу горючего:"+"\n"+airline.findAllPlain(from, to));
 		
 		sc.close();	
 	}	
