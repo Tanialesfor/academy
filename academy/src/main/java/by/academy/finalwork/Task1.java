@@ -1,9 +1,5 @@
 package by.academy.finalwork;
 
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.util.Arrays;
 import java.util.Scanner;
 
 //Реализуйте метод для выполнения простейшего сжатия строк с использованием счетчика

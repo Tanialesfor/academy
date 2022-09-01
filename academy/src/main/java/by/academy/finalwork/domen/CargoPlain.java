@@ -21,7 +21,11 @@ public class CargoPlain extends Plain {
 	public void setVolumeOfCompartment(double volumeOfCompartment) {
 		this.volumeOfCompartment = volumeOfCompartment;
 	}
-
+	@Override
+	public String toString() {
+		return "[name=" + name + ", type=" + type + ", length=" + length + ", capacity=" + capacity + ", carrying="
+				+ carrying + ", flightRange=" + flightRange +", fuelUse=" + fuelUse + ", maxWeight=" + maxWeight + "]\n";
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -40,11 +44,5 @@ public class CargoPlain extends Plain {
 			return false;
 		CargoPlain other = (CargoPlain) obj;
 		return Double.doubleToLongBits(volumeOfCompartment) == Double.doubleToLongBits(other.volumeOfCompartment);
-	}
-
-	@Override
-	public String toString() {
-		return "[name=" + name + ", type=" + type + ", length=" + length + ", capacity=" + capacity + ", carrying="
-				+ carrying + ", flightRange=" + flightRange +", fuelUse=" + fuelUse + ", maxWeight=" + maxWeight + "]\n";
 	}
 }

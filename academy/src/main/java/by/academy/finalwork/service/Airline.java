@@ -1,7 +1,6 @@
 package by.academy.finalwork.service;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.Objects;
 
@@ -44,26 +43,21 @@ public class Airline {
 		Collections.sort(plains);
 		System.out.println("Результат сортировки по дальности полета самолетов: "+ "\n"+plains.toString());
 	}
-	
-	public Plain findPlain(Double from, Double to) {
+	public ArrayList <Plain> findAllPlain(Double from, Double to) {
+		ArrayList <Plain> plainsAll=new ArrayList <Plain>();
 		for (int i=0;i<plains.size();i++) {
-			if (plains.get(i).getFuelUse()>=from && plains.get(i).getFuelUse()<=to) {
-				return plains.get(i);
+			if (plains.get(i).getFuelUse()>=from && plains.get(i).getFuelUse()<=to) {				
+				plainsAll.add(plains.get(i));
 			}
 		}
-		return null;
+		return plainsAll;
+	}	
+	
+	@Override
+	public String toString() {
+		return "Airline [plains=" + plains + "]";
 	}
-	
-//	public ArrayList <Plain> findAllPlain(Double from, Double to) {
-//		ArrayList <Plain> plainsAll=new ArrayList <Plain>();
-//		for (int i=0;i<plains.size();i++) {
-//			if (plains.get(i).getFuelUse()>=from && plains.get(i).getFuelUse()<=to) {				
-//				plainsAll.add(plains.get(i));
-//			}
-//		}
-//		return plainsAll;
-//	}
-	
+		
 	@Override
 	public int hashCode() {
 		return Objects.hash(capacityAll, carryingAll, plains);
@@ -81,10 +75,5 @@ public class Airline {
 		return capacityAll == other.capacityAll
 				&& Double.doubleToLongBits(carryingAll) == Double.doubleToLongBits(other.carryingAll)
 				&& Objects.equals(plains, other.plains);
-	}
-
-	@Override
-	public String toString() {
-		return "Airline [plains=" + plains + "]";
 	}
 }

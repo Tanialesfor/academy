@@ -21,7 +21,11 @@ public class SmallEnginePlain extends Plain {
 	public void setTypeOfEngine(String typeOfEngine) {
 		this.typeOfEngine = typeOfEngine;
 	}
-	
+	@Override
+	public String toString() {
+		return "[name=" + name + ", type=" + type + ", length=" + length + ", capacity=" + capacity + ", carrying="
+				+ carrying + ", flightRange=" + flightRange +", fuelUse=" + fuelUse + ", maxWeight=" + maxWeight + "]\n";
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -40,11 +44,5 @@ public class SmallEnginePlain extends Plain {
 			return false;
 		SmallEnginePlain other = (SmallEnginePlain) obj;
 		return Objects.equals(typeOfEngine, other.typeOfEngine);
-	}
-
-	@Override
-	public String toString() {
-		return "[name=" + name + ", type=" + type + ", length=" + length + ", capacity=" + capacity + ", carrying="
-				+ carrying + ", flightRange=" + flightRange +", fuelUse=" + fuelUse + ", maxWeight=" + maxWeight + "]\n";
 	}
 }

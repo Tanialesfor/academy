@@ -21,7 +21,11 @@ public class PassengerPlain extends Plain{
 	public void setCountEngine(int countEngine) {
 		this.countEngine = countEngine;
 	}
-
+	@Override
+	public String toString() {
+		return "[name=" + name + ", type=" + type + ", length=" + length + ", capacity=" + capacity + ", carrying="
+				+ carrying + ", flightRange=" + flightRange +", fuelUse=" + fuelUse + ", maxWeight=" + maxWeight + "]\n";
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -40,11 +44,5 @@ public class PassengerPlain extends Plain{
 			return false;
 		PassengerPlain other = (PassengerPlain) obj;
 		return countEngine == other.countEngine;
-	}
-
-	@Override
-	public String toString() {
-		return "[name=" + name + ", type=" + type + ", length=" + length + ", capacity=" + capacity + ", carrying="
-				+ carrying + ", flightRange=" + flightRange +", fuelUse=" + fuelUse + ", maxWeight=" + maxWeight + "]\n";
 	}
 }

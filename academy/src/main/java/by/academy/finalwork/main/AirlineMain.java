@@ -96,8 +96,7 @@ public class AirlineMain {
 			 }
 		 }  
 		
-		System.out.println("Самолет, который соответствует заданному диапазону по расходу горючего:"+"\n"+airline.findPlain(from, to));	
-//		System.out.println("Самолеты, которые соответствуют заданному диапазону по расходу горючего:"+"\n"+airline.findAllPlain(from, to));
+		System.out.println("Самолеты, которые соответствуют заданному диапазону по расходу горючего:"+"\n"+airline.findAllPlain(from, to));
 		
 		sc.close();	
 	}	
